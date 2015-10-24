@@ -30,6 +30,81 @@ See a complete working example in the [roots-example-project.com repo](https://g
 
 ## Installation
 
+### Local development
+
+    git clone --recursive git@github.com:generoi/sundstroms.git sundstroms
+    cd sundstroms
+
+    # Setup git hooks
+    ./lib/git-hooks/install.sh
+
+    # Install dependencies
+    bundle
+    composer install
+
+    # Setup the ENV variables (pre-configured for the VM)
+    cp .env.example .env
+
+    # Setup the VM folder
+    make vm
+
+    # Fetch ansible roles used by Drupal VM
+    sudo ansible-galaxy install -r lib/drupal-vm/provisioning/requirements.yml --force
+
+    # Build the VM
+    vagrant up --provision
+
+    # To sync files from your computer to the virtual machine, run
+    vagrant gatling-rsync-auto
+
+    # Install theme dependencies
+    # If npm install fails, make sure you have the lastest node and npm installed
+    cd web/app/themes/example
+    npm install
+    bower install
+
+#### Using WP-CLI locally
+
+Install the WP-CLI together with the SSH command
+
+    composer global require wp-cli/wp-cli
+    composer global require x-team/wp-cli-ssh dev-master
+
+Usage (eg how to import a db from local)
+
+    wp ssh db cli --host=vagrant < dump.sql
+
+### minasanor.genero.fi
+
+#### Clone the git repo
+
+Do this in you /var/www/u/USERNAME/ forlder on the dev server, unless you use
+a VM on your own machine with vagrant, than this will be the "site" folder....
+
+    git clone --recursive git@github.com:generoi/sundstroms.git sundstroms
+
+#### Fetch what is needed
+
+Fetch both the needed php (to build the site with its plugins and fetch wp
+core) and ruby code (that capistrano needs) by running
+
+    bundle
+    composer install
+
+    cd web/app/themes/sundstroms
+    npm install
+    bower install
+
+if composer complains, do the composer udpate using the `--ignore-platform-reqs` flag
+
+    composer update --ignore-platform-reqs
+
+if capistrano complains that somethings is missing, it might be that you need
+to run bundle again if the Capfile has been updated what it requires but it has
+not yet been fetched
+
+#### Set up database and Wordpress
+
 1. Create a new project in a new folder for your project:
 
   `composer create-project roots/bedrock your-project-folder-name`
