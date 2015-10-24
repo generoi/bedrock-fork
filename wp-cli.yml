@@ -1,1 +1,10 @@
 path: web/wp
+
+ssh:
+  # The keys here are supplied to `wp` via the --ssh-host argument
+  vagrant:
+    # Note the following command is needed because passing the -t/-T (%pseudotty%)
+    # argument doesn't seem to be recognized by vagrant: vagrant ssh -c %cmd% -- %pseudotty%
+    cmd: vagrant ssh-config --host default >| /tmp/vagrant_ssh_config && ssh -q %pseudotty% -F /tmp/vagrant_ssh_config default %cmd%
+    path: /var/www/wordpress/web/wp
+    url: example.dev
