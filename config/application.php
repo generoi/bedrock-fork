@@ -74,6 +74,7 @@ define('NONCE_SALT', env('NONCE_SALT'));
 define('AUTOMATIC_UPDATER_DISABLED', true);
 define('DISABLE_WP_CRON', env('DISABLE_WP_CRON') ?: false);
 define('DISALLOW_FILE_EDIT', true);
+define('WPCACHEHOME', WP_CONTENT_DIR . '/plugins/wp-super-cache/');
 
 /**
  * Bootstrap WordPress

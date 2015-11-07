@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "cd web/app/themes/<example>/; gulp jshint && node_modules/.bin/jscs assets/scripts/*.js",
-    "update": "bundle && composer install && (cd web/app/themes/<example>/; npm install && bower install)"
+    "update": "bundle && composer install && (cd web/app/themes/<example>/; npm install && bower install)",
+    "build": "cd web/app/themes/<example>/; gulp --production"
   },
   "repository": {
     "type": "git",
