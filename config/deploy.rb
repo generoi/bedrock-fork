@@ -54,8 +54,10 @@ namespace :cache do
   task 'flush-wpcc' do
     on roles(:app) do
       within current_path do
-        execute :sudo, :chown, '-R', 'deploy:deploy', 'web/app/cache/supercache'
+        execute :sudo, :chown, '-Rf', 'deploy:deploy', 'web/app/cache/supercache'
         execute :rm, '-rf', 'web/app/cache/supercache/*'
+        execute :rm, '-rf', 'web/app/cache/meta/*'
+        execute :rm, '-f', 'web/app/cache/wp-cache-*'
       end
     end
   end
