@@ -1,5 +1,4 @@
-# [Bedrock](https://roots.io/bedrock/)
-[![Build Status](https://travis-ci.org/roots/bedrock.svg)](https://travis-ci.org/roots/bedrock)
+# <example-project>
 
 > **Note, here's a [diff of commits availabe upstream](https://github.com/generoi/bedrock/compare/genero...roots:master)**
 
@@ -33,8 +32,8 @@ See a complete working example in the [roots-example-project.com repo](https://g
 
 ### Local development
 
-    git clone --recursive git@github.com:generoi/sundstroms.git sundstroms
-    cd sundstroms
+    git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
+    cd <example-project>
 
     # Setup git hooks
     ./lib/git-hooks/install.sh
@@ -82,7 +81,7 @@ Usage (eg how to import a db from local)
 Do this in you /var/www/u/USERNAME/ forlder on the dev server, unless you use
 a VM on your own machine with vagrant, than this will be the "site" folder....
 
-    git clone --recursive git@github.com:generoi/sundstroms.git sundstroms
+    git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
 
 #### Fetch what is needed
 
@@ -92,7 +91,7 @@ core) and ruby code (that capistrano needs) by running
     bundle
     composer install
 
-    cd web/app/themes/sundstroms
+    cd web/app/themes/<example-project>
     npm install
     bower install
 
@@ -120,6 +119,64 @@ not yet been fetched
 4. Add theme(s) in `web/app/themes` as you would for a normal WordPress site.
 5. Set your site vhost document root to `/path/to/site/web/` (`/path/to/site/current/web/` if using deploys)
 6. Access WP admin at `http://example.com/wp/wp-admin`
+
+## Setup a new repository
+
+1. Clone the repo - `git clone --recursive git@github.com:generoi/bedrock.git foobar`
+2. Clone the theme
+
+    ```sh
+    cd foobar/web/app/themes;
+
+    # Regular sage
+    git clone git@github.com:generoi/sage.git foobar
+    # Alternatively the Timber version
+    git clone -b timber git@github.com:generoi/sage.git foobar
+
+    # Delete the git files
+    rm -rf foobar/.git
+
+    # Install NPM and Bower packages
+    npm install
+    bower install
+
+    # Return to the root of the project
+    cd -
+    ```
+
+3. Setup git hooks `./lib/git-hooks/install.sh`
+4. Install dependencies `bundle; composer install`
+5. Setup the ENV variables (pre-configured for the VM) `cp .env.example .env`
+6. Rename everything (relies on your theme being named the same as the repository)
+
+    ```sh
+    # Search and replace all references to the project
+    find . -type f -print0 | xargs -0 sed -i 's/<example-project>/foobar/g'
+
+    # You need to manually setup the production host in:
+    # - `Makefile`
+    # - `config/deploy/production.rb`
+    # - `wp-cli.yml`
+    ```
+
+7. Setup the VM
+
+    ```sh
+    # Change the VM IP to something unique
+    vim config/drupal-vm.config.yml
+
+    # Setup the VM directory
+    make vm
+
+    # Fetch ansible roles used by Drupal VM
+    sudo ansible-galaxy install -r lib/drupal-vm/provisioning/requirements.yml --force
+
+    # Build the VM
+    vagrant up --provision
+
+    # To sync files from your computer to the virtual machine, run
+    vagrant rsync-auto
+    ```
 
 ## Deploys
 

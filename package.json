@@ -1,17 +1,17 @@
 {
-  "name": "<example>",
+  "name": "<example-project>",
   "version": "1.0.0",
   "description": "",
-  "homepage": "http://www.<example>.fi",
+  "homepage": "http://www.<example-project>.fi",
   "main": "index.js",
   "scripts": {
-    "test": "cd web/app/themes/<example>/; gulp jshint && node_modules/.bin/jscs assets/scripts/*.js",
-    "update": "bundle && composer install && (cd web/app/themes/<example>/; npm install && bower install)",
-    "build": "cd web/app/themes/<example>/; gulp --production"
+    "test": "cd web/app/themes/<example-project>/; gulp jshint && node_modules/.bin/jscs assets/scripts/*.js",
+    "update": "bundle && composer install && (cd web/app/themes/<example-project>/; npm install && bower install)",
+    "build": "cd web/app/themes/<example-project>/; gulp --production"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:generoi/example>.git"
+    "url": "git@github.com:generoi/<example-project>.git"
   },
   "authors": [
     "Christoffer Björkskog <christoffer@genero.fi>",
@@ -19,6 +19,6 @@
   ],
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/generoi/<example>/issues"
+    "url": "https://github.com/generoi/<example-project>/issues"
   }
 }

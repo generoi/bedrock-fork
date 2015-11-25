@@ -1,11 +1,11 @@
 WP_CLI_HOST ?= vagrant
 DATABASE_EXPORT ?= database.sql
 
-DEV_HOST ?= example.dev
-PRODUCTION_HOST ?= example.com
+DEV_HOST ?= <example-project>.dev
+PRODUCTION_HOST ?= <example-project>.com
 LOCAL_HOST ?= localhost:3000
 
-PRODUCTION_REMOTE_HOST ?= deploy@example.com:/home/www/example
+PRODUCTION_REMOTE_HOST ?= deploy@<example-project>.com:/home/www/<example-project>
 
 all:
 

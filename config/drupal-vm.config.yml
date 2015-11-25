@@ -6,9 +6,9 @@ vagrant_user: vagrant
 
 # If you need to run multiple instances of Drupal VM, set a unique hostname,
 # machine name, and IP address for each instance.
-vagrant_hostname: example.dev
-vagrant_machine_name: example
-vagrant_ip: 192.168.87.88
+vagrant_hostname: <example-project>.dev
+vagrant_machine_name: <example-project>
+vagrant_ip: 192.168.87.87
 
 # Allow Drupal VM to be accessed via a public network interface on your host.
 # Vagrant boxes are insecure by default, so be careful. You've been warned!
@@ -28,7 +28,7 @@ vagrant_synced_folders:
     create: true
     excluded_paths: [
       '.git/', './vm/', './lib/', '.tmp/', 'node_modules/',
-      './web/app/uploads/', './web/app/cache/'
+      'app/uploads/', 'app/cache/'
     ]
     options_override:
       rsync__chown: false
@@ -60,7 +60,7 @@ install_site: false
 # is 'true').
 drupal_major_version: 7
 drupal_core_path: "/var/www/wordpress/web"
-drupal_domain: "example.dev"
+drupal_domain: "<example-project>.dev"
 # drupal_site_name: "Drupal"
 # drupal_install_profile: standard
 # drupal_enable_modules: [ 'devel' ]
@@ -91,21 +91,22 @@ configure_local_drush_aliases: false
 # View the geerlingguy.apache Ansible Role README for more options.
 apache_vhosts:
   - servername: "{{ drupal_domain }}"
-    serveralias: "www.example.dev"
+    serveralias: "www.<example-project>.dev"
     documentroot: "{{ drupal_core_path }}"
 
-  - servername: "adminer.example.dev"
+  - servername: "adminer.<example-project>.dev"
     documentroot: "/opt/adminer"
 
-  - servername: "xhprof.example.dev"
+  - servername: "xhprof.<example-project>.dev"
     documentroot: "/usr/share/php/xhprof_html"
 
-  - servername: "pimpmylog.example.dev"
+  - servername: "pimpmylog.<example-project>.dev"
     documentroot: "/usr/share/php/pimpmylog"
 
 apache_remove_default_vhost: true
 apache_mods_enabled:
   - expires.load
+  - headers.load
   - ssl.load
   - rewrite.load
 
