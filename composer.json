@@ -140,6 +140,7 @@
     "wpackagist-plugin/wp-mail-smtp": "*",
     "wpackagist-plugin/scalable-vector-graphics-svg": "*",
     "wpackagist-plugin/tinymce-advanced": "*",
+    "wpackagist-plugin/widget-css-classes": "*",
 
     "wpackagist-plugin/wordpress-seo": ">=2.3.4",
     "wpackagist-plugin/google-analytics-for-wordpress": ">=5.4.6",
@@ -163,6 +164,9 @@
     "wpackagist-plugin/wp-xhprof-profiler": "*",
     "wpackagist-plugin/debug-bar": ">=0.8.1",
     "wpackagist-plugin/kint-debugger": ">=0.2",
+
+    "wpackagist-plugin/timber-library": "*",
+    "wpackagist-plugin/debug-bar-timber": "*",
 
     "patched/wp-editor-widget": "0.5.5",
     "roots/soil": "3.5.0"
