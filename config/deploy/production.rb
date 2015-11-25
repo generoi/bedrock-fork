@@ -3,17 +3,17 @@ require 'net/ssh/proxy/command'
 
 set :stage, :production
 
-set :app_url,       "http://www.<host>"
-set :deploy_to,     "/var/www/<project>"
+set :app_url,       "http://www.<example-project>.fi"
+set :deploy_to,     "/var/www/<example-project>"
 
 # Simple Role Syntax
 # ==================
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
-role :app, %w{deploy@<host>}
-role :web, %w{deploy@<host>}
-role :db,  %w{deploy@<host>}
+role :app, %w{deploy@<example-project>.fi}
+role :web, %w{deploy@<example-project>.fi}
+role :db,  %w{deploy@<example-project>.fi}
 
 set :ssh_options, {
   forward_agent: true

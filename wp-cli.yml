@@ -7,9 +7,9 @@ ssh:
     # argument doesn't seem to be recognized by vagrant: vagrant ssh -c %cmd% -- %pseudotty%
     cmd: vagrant ssh-config --host default >| /tmp/vagrant_ssh_config && ssh -q %pseudotty% -F /tmp/vagrant_ssh_config default %cmd%
     path: /var/www/wordpress/web/wp
-    url: example.dev
+    url: <example-project>.dev
 
   production:
     cmd: ssh %pseudotty% -o ForwardAgent=yes -o ProxyCommand='ssh deploy@minasanor.genero.fi nc %h %p 2> /dev/null' deploy@example.com %cmd%
     path: /home/www/example/deploy/current/web/wp
-    url: www.example.com
+    url: www.<example-project>.fi
