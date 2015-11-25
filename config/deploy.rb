@@ -1,6 +1,6 @@
-set :application, '<example>'
-set :repo_url, 'git@github.com:generoi/<example>.git'
-set :customer_username, '<example>'
+set :application, '<example-project>'
+set :repo_url, 'git@github.com:generoi/<example-project>.git'
+set :customer_username, '<example-project>'
 
 # Hardcodes branch to always be master
 # This could be overridden in a stage config file
@@ -28,7 +28,7 @@ set :rsync_options,           "--recursive --times --compress --human-readable -
 
 # Assets
 set :assets_compile,          "npm run-script build"
-set :assets_output,           %w[web/app/themes/example/dist web/app/themes/example/bower_components]
+set :assets_output,           %w[web/app/themes/<example-project>/dist web/app/themes/<example-project>/bower_components]
 
 # Slackistrano (change to true)
 set :slack_run_starting,     -> { false }
