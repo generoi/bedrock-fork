@@ -2,7 +2,7 @@ path: web/wp
 
 ssh:
   # The keys here are supplied to `wp` via the --ssh-host argument
-  vagrant:
+  dev:
     # Note the following command is needed because passing the -t/-T (%pseudotty%)
     # argument doesn't seem to be recognized by vagrant: vagrant ssh -c %cmd% -- %pseudotty%
     cmd: vagrant ssh-config --host default >| /tmp/vagrant_ssh_config && ssh -q %pseudotty% -F /tmp/vagrant_ssh_config default %cmd%
@@ -13,3 +13,8 @@ ssh:
     cmd: ssh %pseudotty% -o ForwardAgent=yes -o ProxyCommand='ssh deploy@minasanor.genero.fi nc %h %p 2> /dev/null' deploy@example.com %cmd%
     path: /home/www/example/deploy/current/web/wp
     url: www.<example-project>.fi
+
+  staging:
+    cmd: ssh %pseudotty% -o ForwardAgent=yes deploy@minasanor.genero.fi %cmd%
+    path: /var/www/staging/<example-project>/current/web/wp
+    url: <example-project>.web.staging.minasanor.genero.fi
