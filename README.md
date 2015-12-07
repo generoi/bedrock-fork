@@ -172,6 +172,25 @@ not yet been fetched
     # - `wp-cli.yml`
     ```
 
+7. Setup the new remote git repository
+
+    ```sh
+    # Remove the existing master branch (bedrocks own)
+    git branch -D master
+
+    # Switch to a new master branch for this project
+    git checkout -b master
+
+    # Create a new repository on github
+    open https://github.com/organizations/generoi/repositories/new
+
+    # Set origin url to to the newly created github repository
+    git@github.com:generoi/<example-project>.git
+
+    # Push the code
+    git push -u origin master
+    ```
+
 7. Setup the VM
 
     ```sh
