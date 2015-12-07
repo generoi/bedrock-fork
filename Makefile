@@ -1,11 +1,16 @@
-WP_CLI_HOST ?= vagrant
+WP_CLI_HOST ?= dev
 DATABASE_EXPORT ?= database.sql
 
 DEV_HOST ?= <example-project>.dev
 PRODUCTION_HOST ?= <example-project>.com
 LOCAL_HOST ?= localhost:3000
+STAGING_HOST ?= <example-project>.staging.minasanor.genero.fi
 
 PRODUCTION_REMOTE_HOST ?= deploy@<example-project>.com:/home/www/<example-project>
+STAGING_REMOTE_HOST ?= deploy@minasanor.genero.fi:/var/www/staging/<example-project>
+
+DEV_PLUGINS ?= debug-bar kint-debugger
+PROD_PLUGINS ?= autoptimize
 
 all:
 
@@ -29,45 +34,102 @@ vm-clean:
 $(DATABASE_EXPORT):
 	wp ssh db export - --host=$(WP_CLI_HOST) >| $(DATABASE_EXPORT)
 
-production-pull-db:
-	make db-clean WP_CLI_HOST=production $(DATABASE_EXPORT)
-	cat $(DATABASE_EXPORT) | wp ssh db cli --host=vagrant
-	make dev-db-search-replace db-clean dev-plugins
+wp-search-replace:
+	wp ssh search-replace --recurse-objects --network '$(STAGING_HOST)' '$(TARGET_HOST)' --host=$(TARGET)
+	wp ssh search-replace --recurse-objects --network '$(LOCAL_HOST)' '$(TARGET_HOST)' --host=$(TARGET)
+	wp ssh search-replace --recurse-objects --network '$(DEV_HOST)' '$(TARGET_HOST)' --host=$(TARGET)
+	wp ssh search-replace --recurse-objects --network '$(PRODUCTION_HOST)' '$(TARGET_HOST)' --host=$(TARGET)
 
-production-push-db: $(DATABASE_EXPORT)
-	cat $(DATABASE_EXPORT) | wp ssh db cli --host=production
-	make production-db-search-replace db-clean
+wp-pull-db:
+	make db-clean WP_CLI_HOST=$(SOURCE) $(DATABASE_EXPORT)
+	cat $(DATABASE_EXPORT) | wp ssh db cli --host=$(TARGET)
 
-production-db-search-replace:
-	wp ssh search-replace --recurse-objects --network '$(DEV_HOST)' '$(PRODUCTION_HOST)' --host=production
-	wp ssh search-replace --recurse-objects --network '$(LOCAL_HOST)' '$(PRODUCTION_HOST)' --host=production
-
-dev-db-search-replace:
-	wp ssh search-replace --recurse-objects --network '$(PRODUCTION_HOST)' '$(DEV_HOST)' --host=vagrant
-	wp ssh search-replace --recurse-objects --network '$(LOCAL_HOST)' '$(DEV_HOST)' --host=vagrant
+wp-push-db: $(DATABASE_EXPORT)
+	cat $(DATABASE_EXPORT) | wp ssh db cli --host=$(TARGET)
+	make $(TARGET)-db-search-replace db-clean
 
 db-clean:
 	rm -f $(DATABASE_EXPORT)
 
+.PHONY: wp-search-replace wp-pull-db db-clean
+
 # Files -----------------------------------------------------------------------
 
-dev-fetch-files:
+# Fetches the dev environments files to the local filesystem
+wp-fetch-files:
 	vagrant ssh-config --host default > /tmp/vagrant-ssh-config
 	rsync -r -e 'ssh -F /tmp/vagrant-ssh-config' default:/var/www/wordpress/web/app/uploads/ web/app/uploads/
 	rm -f /tmp/vagrant-ssh-config
 
-production-pull-files:
-	rsync -v -r -e 'ssh -o ForwardAgent=yes -o ProxyCommand="ssh deploy@minasanor.genero.fi nc %h %p 2> /dev/null"' $(PRODUCTION_REMOTE_HOST)/deploy/current/web/app/uploads/ web/app/uploads/
+# Pulls the remote files first into the local filesystem and then to the dev filesystem
+wp-pull-files:
+	rsync -v -r -e 'ssh $(RSYNC_SSH)' $(SOURCE) $(TARGET)
 	vagrant ssh-config --host default >| /tmp/vagrant-ssh-config
-	rsync -v -r --no-perms --no-owner --no-group --verbose -e 'ssh -F /tmp/vagrant-ssh-config' web/app/uploads/ default:/var/www/wordpress/web/app/uploads/
+	rsync -v -r --no-perms --no-owner --no-group --verbose -e 'ssh -F /tmp/vagrant-ssh-config' $(TARGET) default:/var/www/wordpress/$(TARGET)
 
-production-push-files: dev-fetch-files
-	rsync -v -r -e 'ssh -o ForwardAgent=yes -o ProxyCommand="ssh deploy@minasanor.genero.fi nc %h %p 2> /dev/null"' web/app/uploads/ $(PRODUCTION_REMOT_HOST)/deploy/current/web/app/uploads/
+# Push the files in the dev environment to the remote filesystem
+wp-push-files: wp-fetch-files
+	rsync -v -r -e 'ssh $(RSYNC_SSH)' $(SOURCE) $(TARGET)
 
-# Plugins setup ---------------------------------------------------------------
+
+# Production tasks ------------------------------------------------------------
+
+production-db-search-replace: TARGET_HOST=$(PRODUCTION_HOST)
+production-db-search-replace: TARGET=production
+production-db-search-replace: wp-search-replace
+
+production-pull-db: SOURCE=production
+production-pull-db: TARGET=dev
+production-pull-db: wp-pull-db
+
+production-push-db: SOURCE=dev
+production-push-db: TARGET=production
+production-push-db: wp-push-db
+
+production-pull-files: RSYNC_SSH=-o ForwardAgent=yes -o ProxyCommand="ssh deploy@minasanor.genero.fi nc %h %p 2> /dev/null"
+production-pull-files: SOURCE=$(PRODUCTION_REMOTE_HOST)/deploy/current/web/app/uploads/
+production-pull-files: TARGET=web/app/uploads/
+production-pull-files: wp-pull-files
+
+production-push-files: RSYNC_SSH=-o ForwardAgent=yes -o ProxyCommand="ssh deploy@minasanor.genero.fi nc %h %p 2> /dev/null"
+production-push-files: SOURCE=web/app/uploads/
+production-push-files: TARGET=$(PRODUCTION_REMOTE_HOST)/deploy/current/web/app/uploads/
+production-push-files: wp-push-files
+
+# Staging tasks ---------------------------------------------------------------
+
+staging-db-search-replace: TARGET_HOST=$(STAGING_HOST)
+staging-db-search-replace: TARGET=staging
+staging-db-search-replace: wp-search-replace
+
+staging-pull-db: SOURCE=staging
+staging-pull-db: TARGET=dev
+staging-pull-db: wp-pull-db
+
+staging-push-db: SOURCE=dev
+staging-push-db: TARGET=staging
+staging-push-db: wp-push-db
+
+staging-pull-files: RSYNC_SSH=-o ForwardAgent=yes
+staging-pull-files: SOURCE=$(STAGING_REMOTE_HOST)/current/web/app/uploads/
+staging-pull-files: TARGET=web/app/uploads/
+staging-pull-files: wp-pull-files
+
+staging-push-files: RSYNC_SSH=-o ForwardAgent=yes
+staging-push-files: SOURCE=web/app/uploads/
+staging-push-files: TARGET=$(STAGING_REMOTE_HOST)/current/web/app/uploads/
+staging-push-files: wp-push-files
+
+# Dev tasks -------------------------------------------------------------------
+
+dev-db-search-replace: TARGET_HOST=$(DEV_HOST)
+dev-db-search-replace: TARGET=dev
+dev-db-search-replace: wp-search-replace
 
 dev-plugins:
-	wp ssh plugin activate debug-bar kint-debugger --host=vagrant
-	wp ssh plugin deactivate autoptimize --host=vagrant
+	wp ssh plugin activate $(DEV_PLUGINS) --host=dev
+	wp ssh plugin deactivate $(PROD_PLUGINS) --host=dev
+
+# Plugins setup ---------------------------------------------------------------
 
 .PHONY: all vm-clean vm-fetch-files
