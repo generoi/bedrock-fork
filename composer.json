@@ -106,18 +106,6 @@
           "type": "zip"
         }
       }
-    },
-    {
-      "type":"package",
-      "package": {
-        "name": "patched/wp-editor-widget",
-        "version":"0.5.5",
-        "type": "wordpress-plugin",
-        "dist": {
-          "url": "https://github.com/oxyc/wp-editor-widget/archive/master.zip",
-          "type": "zip"
-        }
-      }
     }
   ],
   "require": {
@@ -141,6 +129,7 @@
     "wpackagist-plugin/scalable-vector-graphics-svg": "*",
     "wpackagist-plugin/tinymce-advanced": "*",
     "wpackagist-plugin/widget-css-classes": "*",
+    "wpackagist-plugin/black-studio-tinymce-widget": "*",
 
     "wpackagist-plugin/wordpress-seo": ">=2.3.4",
     "wpackagist-plugin/google-analytics-for-wordpress": ">=5.4.6",
@@ -168,7 +157,6 @@
     "wpackagist-plugin/timber-library": "*",
     "wpackagist-plugin/debug-bar-timber": "*",
 
-    "patched/wp-editor-widget": "0.5.5",
     "roots/soil": "3.5.0"
 
   },
