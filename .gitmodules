@@ -4,9 +4,6 @@
 [submodule "lib/git-hooks"]
 	path = lib/git-hooks
 	url = git@github.com:generoi/git-hooks.git
-[submodule "lib/wp-plugins"]
-	path = lib/wp-plugins
-	url = git@github.com:generoi/wp-plugins.git
 [submodule "lib/capistrano"]
 	path = lib/capistrano
 	url = git@github.com:generoi/capistrano-tasks.git
