@@ -185,7 +185,7 @@ not yet been fetched
     open https://github.com/organizations/generoi/repositories/new
 
     # Set origin url to to the newly created github repository
-    git@github.com:generoi/<example-project>.git
+    git remote set-url origin git@github.com:generoi/<example-project>.git
 
     # Push the code
     git push -u origin master

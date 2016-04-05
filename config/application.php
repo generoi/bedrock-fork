@@ -64,7 +64,7 @@ $table_prefix = env('DB_PREFIX') ?: 'wp_';
 // define('WP_ALLOW_MULTISITE', true);
 // define('MULTISITE', true);
 // define('SUBDOMAIN_INSTALL', true);
-// define('DOMAIN_CURRENT_SITE', getenv('DOMAIN_CURRENT_SITE'));
+// define('DOMAIN_CURRENT_SITE', env('DOMAIN_CURRENT_SITE'));
 // define('PATH_CURRENT_SITE', '/');
 // define('SITE_ID_CURRENT_SITE', 1);
 // define('BLOG_ID_CURRENT_SITE', 1);
