@@ -7,3 +7,6 @@
 [submodule "lib/capistrano"]
 	path = lib/capistrano
 	url = git@github.com:generoi/capistrano-tasks.git
+[submodule "lib/genero-conf"]
+	path = lib/genero-conf
+	url = git@github.com:generoi/genero-conf.git

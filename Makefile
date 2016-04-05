@@ -22,7 +22,6 @@ all:
 vm:
 	cp -r lib/drupal-vm vm
 	ln -sf ../config/drupal-vm.config.yml vm/config.yml
-	ln -sf ../config/Vagrantfile vm/Vagrantfile
 
 vm-clean:
 	rm -rf vm
