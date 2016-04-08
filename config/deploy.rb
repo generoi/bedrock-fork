@@ -54,10 +54,14 @@ namespace :cache do
   task 'flush-wpcc' do
     on roles(:app) do
       within current_path do
-        execute :sudo, :chown, '-Rf', 'deploy:deploy', 'web/app/cache/supercache'
-        execute :rm, '-rf', 'web/app/cache/supercache/*'
-        execute :rm, '-rf', 'web/app/cache/meta/*'
-        execute :rm, '-f', 'web/app/cache/wp-cache-*'
+        begin
+          execute :sudo, :chown, '-Rf', 'deploy:deploy', 'web/app/cache/supercache'
+          execute :rm, '-rf', 'web/app/cache/supercache/*'
+          execute :rm, '-rf', 'web/app/cache/meta/*'
+          execute :rm, '-f', 'web/app/cache/wp-cache-*'
+        rescue Exception
+          # Ignore exceptions as they are throw if * expands to nothing
+        end
       end
     end
   end
@@ -66,8 +70,12 @@ namespace :cache do
   task 'flush-autoptimize' do
     on roles(:app) do
       within current_path do
-        execute :sudo, :chown, '-R', 'deploy:deploy', 'web/app/cache/autoptimize'
-        execute :rm, '-rf', 'web/app/cache/autoptimize/*'
+        begin
+          execute :sudo, :chown, '-Rf', 'deploy:deploy', 'web/app/cache/autoptimize/*'
+          execute :rm, '-rf', 'web/app/cache/autoptimize/*'
+        rescue Exception
+          # Ignore exceptions as they are throw if * expands to nothing
+        end
       end
     end
   end
