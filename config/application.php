@@ -68,13 +68,12 @@ $table_prefix = env('DB_PREFIX') ?: 'wp_';
 // define('PATH_CURRENT_SITE', '/');
 // define('SITE_ID_CURRENT_SITE', 1);
 // define('BLOG_ID_CURRENT_SITE', 1);
+// define('COOKIE_DOMAIN', '');
+// define('ADMIN_COOKIE_PATH', '/');
+// define('COOKIEPATH', '/');
+// define('SITECOOKIEPATH', '/');
 /** Step 3: Edit your .env to include DOMAIN_CURRENT_SITE, eg. drupal-vm.dev */
 /** Step 4: Uncomment the multisite lines in web/.htaccess */
-/** Step 5: For now, ignore the following lines: */
-// define('ADMIN_COOKIE_PATH', '/');
-// define('COOKIE_DOMAIN', '');
-// define('COOKIEPATH', '');
-// define('SITECOOKIEPATH', '');
 
 /**
  * Authentication Unique Keys and Salts
