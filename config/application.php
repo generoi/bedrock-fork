@@ -58,21 +58,23 @@ $table_prefix = env('DB_PREFIX') ?: 'wp_';
 
 /**
  * Multisite
- * Begin by simply enabling multisite, and creating a site before uncomming
- * everything.
  */
+/** Step 1: Uncomment this line and visit: /wp/wp-admin/network.php */
 // define('WP_ALLOW_MULTISITE', true);
+/** Step 2: Uncomment the following lines */
 // define('MULTISITE', true);
 // define('SUBDOMAIN_INSTALL', true);
 // define('DOMAIN_CURRENT_SITE', env('DOMAIN_CURRENT_SITE'));
 // define('PATH_CURRENT_SITE', '/');
 // define('SITE_ID_CURRENT_SITE', 1);
 // define('BLOG_ID_CURRENT_SITE', 1);
+/** Step 3: Edit your .env to include DOMAIN_CURRENT_SITE, eg. drupal-vm.dev */
+/** Step 4: Uncomment the multisite lines in web/.htaccess */
+/** Step 5: For now, ignore the following lines: */
 // define('ADMIN_COOKIE_PATH', '/');
 // define('COOKIE_DOMAIN', '');
 // define('COOKIEPATH', '');
 // define('SITECOOKIEPATH', '');
-
 
 /**
  * Authentication Unique Keys and Salts
