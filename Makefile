@@ -14,18 +14,6 @@ PROD_PLUGINS ?= autoptimize
 
 all:
 
-# Virtual Machine -------------------------------------------------------------
-#
-# To scaffold the files for the VM run `make vm`. After that simply provision
-# it.
-
-vm:
-	cp -r lib/drupal-vm vm
-	ln -sf ../config/drupal-vm.config.yml vm/config.yml
-
-vm-clean:
-	rm -rf vm
-
 # Database --------------------------------------------------------------------
 #
 # To get a dump from the VM run `make database.sql`
@@ -131,4 +119,4 @@ dev-plugins:
 
 # Plugins setup ---------------------------------------------------------------
 
-.PHONY: all vm-clean vm-fetch-files
+.PHONY: all vm-fetch-files
