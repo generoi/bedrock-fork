@@ -45,12 +45,6 @@ See a complete working example in the [roots-example-project.com repo](https://g
     # Setup the ENV variables (pre-configured for the VM)
     cp .env.example .env
 
-    # Setup the VM folder
-    make vm
-
-    # Fetch ansible roles used by Drupal VM
-    sudo ansible-galaxy install -r lib/drupal-vm/provisioning/requirements.yml --force
-
     # Build the VM
     vagrant up --provision
 
@@ -195,13 +189,7 @@ not yet been fetched
 
     ```sh
     # Change the VM IP to something unique
-    vim config/drupal-vm.config.yml
-
-    # Setup the VM directory
-    make vm
-
-    # Fetch ansible roles used by Drupal VM
-    sudo ansible-galaxy install -r lib/drupal-vm/provisioning/requirements.yml --force
+    vim config/local.config.yml
 
     # Build the VM
     vagrant up --provision
