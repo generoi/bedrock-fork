@@ -61,19 +61,21 @@ $table_prefix = env('DB_PREFIX') ?: 'wp_';
  */
 /** Step 1: Uncomment this line and visit: /wp/wp-admin/network.php */
 // define('WP_ALLOW_MULTISITE', true);
-/** Step 2: Uncomment the following lines */
+/** Step 3: Edit your .env to include DOMAIN_CURRENT_SITE, eg. drupal-vm.dev */
+/** Step 4: Uncomment the following lines */
 // define('MULTISITE', true);
 // define('SUBDOMAIN_INSTALL', true);
 // define('DOMAIN_CURRENT_SITE', env('DOMAIN_CURRENT_SITE'));
 // define('PATH_CURRENT_SITE', '/');
 // define('SITE_ID_CURRENT_SITE', 1);
 // define('BLOG_ID_CURRENT_SITE', 1);
-// define('COOKIE_DOMAIN', '');
+/** Step 5: Uncomment the multisite lines in web/.htaccess */
 // define('ADMIN_COOKIE_PATH', '/');
-// define('COOKIEPATH', '/');
+// define('COOKIE_DOMAIN', '');
+// define('COOKIEPATH', '');
+// // Used by LOGGED_IN_COOKIE and needs to be available for front-end
+// // otherwise Customizer fails.
 // define('SITECOOKIEPATH', '/');
-/** Step 3: Edit your .env to include DOMAIN_CURRENT_SITE, eg. drupal-vm.dev */
-/** Step 4: Uncomment the multisite lines in web/.htaccess */
 
 /**
  * Authentication Unique Keys and Salts
