@@ -1,6 +1,3 @@
-[submodule "lib/drupal-vm"]
-	path = lib/drupal-vm
-	url = git@github.com:geerlingguy/drupal-vm.git
 [submodule "lib/git-hooks"]
 	path = lib/git-hooks
 	url = git@github.com:generoi/git-hooks.git
