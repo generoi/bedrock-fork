@@ -140,8 +140,10 @@ not yet been fetched
     # Alternatively the Timber version
     git clone -b timber git@github.com:generoi/sage.git foobar
 
+    cd foobar
+
     # Delete the git files
-    rm -rf foobar/.git
+    rm -rf .git
 
     # Install NPM and Bower packages
     npm install
