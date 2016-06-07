@@ -46,10 +46,10 @@ See a complete working example in the [roots-example-project.com repo](https://g
     cp .env.example .env
 
     # Build the VM
-    vagrant up --provision
+    vagrant up
 
     # To sync files from your computer to the virtual machine, run
-    vagrant gatling-rsync-auto
+    vagrant rsync-auto
 
     # Install theme dependencies
     # If npm install fails, make sure you have the lastest node and npm installed
