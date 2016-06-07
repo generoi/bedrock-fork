@@ -191,10 +191,10 @@ not yet been fetched
 
     ```sh
     # Change the VM IP to something unique
-    vim config/local.config.yml
+    vim config/config.yml
 
     # Build the VM
-    vagrant up --provision
+    vagrant up
 
     # To sync files from your computer to the virtual machine, run
     vagrant rsync-auto
