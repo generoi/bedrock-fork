@@ -40,5 +40,4 @@ vm
 # Local configuration
 Makefile.config
 config/Vagrantfile.local
-# @todo waiting for Drupal VM 3.1.0
-# config/local.config.yml
+config/local.config.yml
