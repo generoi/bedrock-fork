@@ -109,3 +109,4 @@ xhprof_download_folder_name: xhprof-master
 # the `provisioning/playbook.yml` file.
 post_provision_scripts:
   - "{{ config_dir }}/../lib/genero-conf/post-provisioning/dotfiles.sh"
+  - "{{ config_dir }}/../lib/genero-conf/post-provisioning/wordpress.sh"
