@@ -149,7 +149,6 @@
     "wpackagist-plugin/autoptimize": "*",
     "wpackagist-plugin/wp-performance-pack": "*",
 
-    "wpackagist-plugin/wp-xhprof-profiler": "*",
     "wpackagist-plugin/debug-bar": ">=0.8.1",
     "wpackagist-plugin/kint-debugger": ">=0.2",
 
