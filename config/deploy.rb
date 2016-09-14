@@ -38,17 +38,6 @@ set :slack_run_failed,       -> { false }
 # set :slack_webhook, "https://hooks.slack.com/services/XXX/XXX/XXX"
 
 # Task definitions
-namespace :deploy do
-  desc 'Change ownership of deployed files'
-  task :chown do
-    on roles(:app) do
-      execute :sudo, "chown -R #{fetch(:customer_username)}:deploy #{release_path}"
-      execute :sudo, "chmod -R g+w #{release_path}"
-    end
-  end
-
-end
-
 namespace :cache do
   desc 'Flush WP Super Cache'
   task 'flush-wpcc' do
@@ -91,8 +80,6 @@ before "deploy:updated", "composer:install"
 # Compiled and rsync assets
 after "deploy:updated", "assets:push"
 
-# Change the file owner to the customer
-after "deploy:updated", "deploy:chown"
 # Clear the cache
 after "deploy:published", "cache:flush-autoptimize"
 after "deploy:published", "cache:flush-wpcc"
