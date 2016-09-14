@@ -120,7 +120,7 @@
     "koodimonni-language/sv_se": "*",
 
     "wpackagist-plugin/akismet": ">=3.1.1",
-    "wpackagist-plugin/display-widgets": ">=2.03",
+    "wpackagist-plugin/widget-options": ">=2.0.1",
     "wpackagist-plugin/pods": ">=2.5.3",
     "wpackagist-plugin/regenerate-thumbnails": ">=2.2.4",
     "wpackagist-plugin/remove-widget-titles": "*",
