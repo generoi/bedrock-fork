@@ -19,20 +19,20 @@ all:
 # To get a dump from the VM run `make database.sql`
 
 $(DATABASE_EXPORT):
-	wp ssh db export - --host=$(WP_CLI_HOST) >| $(DATABASE_EXPORT)
+	wp @$(WP_CLI_HOST) db export - >| $(DATABASE_EXPORT)
 
 wp-search-replace:
-	wp ssh search-replace --recurse-objects --network '$(STAGING_HOST)' '$(TARGET_HOST)' --host=$(TARGET)
-	wp ssh search-replace --recurse-objects --network '$(LOCAL_HOST)' '$(TARGET_HOST)' --host=$(TARGET)
-	wp ssh search-replace --recurse-objects --network '$(DEV_HOST)' '$(TARGET_HOST)' --host=$(TARGET)
-	wp ssh search-replace --recurse-objects --network '$(PRODUCTION_HOST)' '$(TARGET_HOST)' --host=$(TARGET)
+	wp @$(TARGET) search-replace --recurse-objects --network '$(STAGING_HOST)' '$(TARGET_HOST)'
+	wp @$(TARGET) search-replace --recurse-objects --network '$(LOCAL_HOST)' '$(TARGET_HOST)'
+	wp @$(TARGET) search-replace --recurse-objects --network '$(DEV_HOST)' '$(TARGET_HOST)'
+	wp @$(TARGET) search-replace --recurse-objects --network '$(PRODUCTION_HOST)' '$(TARGET_HOST)'
 
 wp-pull-db:
 	make db-clean WP_CLI_HOST=$(SOURCE) $(DATABASE_EXPORT)
-	cat $(DATABASE_EXPORT) | wp ssh db cli --host=$(TARGET)
+	cat $(DATABASE_EXPORT) | wp @$(TARGET) db cli
 
 wp-push-db: $(DATABASE_EXPORT)
-	cat $(DATABASE_EXPORT) | wp ssh db cli --host=$(TARGET)
+	cat $(DATABASE_EXPORT) | wp @$(TARGET) db cli
 	make $(TARGET)-db-search-replace db-clean
 
 db-clean:
@@ -114,8 +114,8 @@ dev-db-search-replace: TARGET=dev
 dev-db-search-replace: wp-search-replace
 
 dev-plugins:
-	wp ssh plugin activate $(DEV_PLUGINS) --host=dev
-	wp ssh plugin deactivate $(PROD_PLUGINS) --host=dev
+	wp @dev plugin activate $(DEV_PLUGINS)
+	wp @dev plugin deactivate $(PROD_PLUGINS)
 
 # Plugins setup ---------------------------------------------------------------
 

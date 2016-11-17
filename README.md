@@ -61,16 +61,29 @@ See a complete working example in the [roots-example-project.com repo](https://g
     npm install
     bower install
 
+#### Add SSH configurations for the remote hosts
+
+For you to be able to access the remote hosts with WP-CLI you need to add the
+following to your `~/.ssh/config` file.
+
+    Host <example-project>.dev
+      StrictHostKeyChecking no
+      IdentityFile ~/.vagrant.d/insecure_private_key
+      ForwardAgent yes
+
+    Host <example-project>.fi
+      ForwardAgent yes
+      ProxyCommand ssh deploy@minasanor.genero.fi nc %h %p 2> /dev/null
+
 #### Using WP-CLI locally
 
-Install the WP-CLI together with the SSH command
+Install WP-CLI
 
     composer global require wp-cli/wp-cli
-    composer global require x-team/wp-cli-ssh dev-master
 
 Usage (eg how to import a db from local)
 
-    wp ssh db cli --host=vagrant < dump.sql
+    wp @dev db cli < dump.sql
 
 ### minasanor.genero.fi
 

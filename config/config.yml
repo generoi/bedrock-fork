@@ -81,6 +81,10 @@ extra_packages:
   - optipng
   - gifsicle
 
+composer_global_packages:
+  - { name: hirak/prestissimo, release: '^0.3' }
+  - { name: wp-cli/wp-cli, release: '^0.25' }
+
 ssh_home: "{{ drupal_core_path }}"
 post_provision_scripts:
   - "{{ config_dir }}/../lib/genero-conf/post-provisioning/dotfiles.sh"
