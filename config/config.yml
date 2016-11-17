@@ -47,7 +47,7 @@ install_site: false
 configure_drush_aliases: false
 drush_keep_updated: false
 
-apache_vhosts:
+apache_vhosts_ssl:
   - servername: "{{ drupal_domain }}"
     serveralias: "www.{{ drupal_domain }}"
     documentroot: "{{ drupal_core_path }}"
@@ -55,24 +55,6 @@ apache_vhosts:
     certificate_key_file: "/etc/ssl/private/ssl-cert-snakeoil.key"
     extra_parameters: |
           ProxyPassMatch ^/(.*\.php(/.*)?)$ "fcgi://127.0.0.1:9000{{ drupal_core_path }}"
-  - servername: "adminer.{{ vagrant_hostname }}"
-    documentroot: "{{ adminer_install_dir }}"
-    extra_parameters: |
-          ProxyPassMatch ^/(.*\.php(/.*)?)$ "fcgi://127.0.0.1:9000{{ adminer_install_dir }}"
-  - servername: "xhprof.{{ vagrant_hostname }}"
-    documentroot: "{{ php_xhprof_html_dir }}"
-    extra_parameters: |
-          ProxyPassMatch ^/(.*\.php(/.*)?)$ "fcgi://127.0.0.1:9000{{ php_xhprof_html_dir }}"
-  - servername: "pimpmylog.{{ vagrant_hostname }}"
-    documentroot: "{{ pimpmylog_install_dir }}"
-    extra_parameters: |
-          ProxyPassMatch ^/(.*\.php(/.*)?)$ "fcgi://127.0.0.1:9000{{ pimpmylog_install_dir }}"
-  - servername: "{{ vagrant_ip }}"
-    serveralias: "dashboard.{{ vagrant_hostname }}"
-    documentroot: "{{ dashboard_install_dir }}"
-    extra_parameters: |
-          ProxyPassMatch ^/(.*\.php(/.*)?)$ "fcgi://127.0.0.1:9000{{ dashboard_install_dir }}"
-          DirectoryIndex index.html
 
 installed_extras:
   - adminer
