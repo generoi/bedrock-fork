@@ -31,6 +31,13 @@ See a complete working example in the [roots-example-project.com repo](https://g
 ## Installation
 
 ### Local development
+Requirements for local development:
+
+* ansible 2.2.0.0 or higher
+* Vagrant 1.8.7 or higher
+* an updated verison of VirtualBox (on OS X)
+* npm (you can manage npm versions using nvm)
+
 
     git clone --recursive git@github.com:generoi/<example-project>.git <example-project>
     cd <example-project>
