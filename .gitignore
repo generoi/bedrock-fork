@@ -34,6 +34,10 @@ bin
 vagrant-ssh-config
 vm
 
+# Logs
+log
+*.log
+
 # Sensitive files
 *.sql
 
