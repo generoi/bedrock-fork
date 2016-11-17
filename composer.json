@@ -157,7 +157,6 @@
     "wpackagist-plugin/debug-bar-timber": "*",
 
     "roots/soil": "3.7.0"
-
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.5.1",

@@ -1,16 +1,32 @@
 path: web/wp
 
-# Aliases to other WordPress installs (e.g. `wp @staging rewrite flush`)
-# An alias can include 'user', 'url', 'path', 'ssh', or 'http'
-# @todo: dev alias requires password to be entered every time
+# Required for WP-CLI 2.4.0 SSH feature.
+require:
+  - lib/genero-conf/wp/wp-cli-pre-ssh.php
+
+# WP-CLI 2.4.0 SSH feature
+# ------------------------
+# Usage: `wp @staging rewrite flush`
+#
+# Add this to your ~/.ssh/config
+#
+#     Host <example-project>.dev
+#       StrictHostKeyChecking no
+#       IdentityFile ~/.vagrant.d/insecure_private_key
+#       ForwardAgent yes
+#
+#     Host <example-project>.fi
+#       ForwardAgent yes
+#       ProxyCommand ssh deploy@minasanor.genero.fi nc %h %p 2> /dev/null
+
 @dev:
-  ssh: vagrant@<example-project>.dev
-  path: /var/www/wordpress/web/wp
+  ssh: vagrant@<example-project>.dev/var/www/wordpress/web/wp
   url: <example-project>.dev
 
 @staging:
-  ssh: deploy@minasanor.genero.fi
-  path: /var/www/staging/<example-project>/current/web/wp
+  ssh: deploy@minasanor.genero.fi/var/www/staging/<example-project>/current/web/wp
   url: <example-project>.web.staging.minasanor.genero.fi
 
-# @todo: make alias for production
+@production:
+  ssh: deploy@<example-project>.fi/home/www/<example-project>/deploy/current/web/wp
+  url: www.<example-project>.fi
