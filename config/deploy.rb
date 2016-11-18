@@ -27,8 +27,9 @@ set :tail_options,            "-n 100 -f"
 set :rsync_options,           "--recursive --times --compress --human-readable --progress"
 
 # Assets
+set :assets_dist_path,        "web/app/themes/<example-project>/dist"
 set :assets_compile,          "npm run-script build"
-set :assets_output,           %w[web/app/themes/<example-project>/dist web/app/themes/<example-project>/bower_components]
+set :assets_output,           [fetch(:assets_dist_path), 'web/app/themes/<example-project>/bower_components']
 
 # Slackistrano (change to true)
 set :slack_run_starting,     -> { false }
@@ -68,6 +69,13 @@ namespace :cache do
       end
     end
   end
+
+  desc 'Clean locally compiled dist/ assets.'
+  task 'flush-dist' do
+    run_locally do
+      execute :rm, '-rf', fetch(:assets_dist_path)
+    end
+  end
 end
 
 # Sanity check
@@ -83,3 +91,6 @@ after "deploy:updated", "assets:push"
 # Clear the cache
 after "deploy:published", "cache:flush-autoptimize"
 after "deploy:published", "cache:flush-wpcc"
+
+# Clear the locally compiled dist/ assets.
+after "deploy:finishing", "cache:flush-dist"
