@@ -31,6 +31,7 @@ See a complete working example in the [roots-example-project.com repo](https://g
 * Vagrant 1.8.7 or higher
 * An updated verison of VirtualBox (on OS X)
 * npm (you can manage npm versions using nvm)
+* bundler
 
 ## Installation
 
