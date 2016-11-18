@@ -25,6 +25,7 @@ set :file_permissions_users, [fetch(:customer_username)]
 
 set :tail_options,            "-n 100 -f"
 set :rsync_options,           "--recursive --times --compress --human-readable --progress"
+set :composer_install_flags,  "--no-dev --no-interaction --quiet --optimize-autoloader"
 
 # Assets
 set :assets_dist_path,        "web/app/themes/<example-project>/dist"
