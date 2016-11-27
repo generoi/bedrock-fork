@@ -41,7 +41,7 @@ See a complete working example in the [roots-example-project.com repo](https://g
     cd <example-project>
 
     # Setup git hooks
-    ./lib/git-hooks/install.sh
+    git config core.hooksPath "vendor/generoi/git-hooks/hooks"
 
     # Install dependencies
     bundle
