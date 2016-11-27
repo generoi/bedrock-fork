@@ -1,3 +1,0 @@
-[submodule "lib/capistrano"]
-	path = lib/capistrano
-	url = git@github.com:generoi/capistrano-tasks.git

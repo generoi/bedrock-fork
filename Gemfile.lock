@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/generoi/capistrano-tasks.git
+  revision: 34d96e4136752ea159399bcfb112bf623db7fe53
+  specs:
+    capistrano-genero (1.0.0)
+      capistrano (>= 3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -34,9 +41,10 @@ PLATFORMS
 DEPENDENCIES
   capistrano (~> 3.2.0)
   capistrano-composer
+  capistrano-genero!
   capistrano-nc (~> 0.1)
   capistrano-ssh-doctor (~> 1.0)
   slackistrano
 
 BUNDLED WITH
-   1.10.5
+   1.11.2
