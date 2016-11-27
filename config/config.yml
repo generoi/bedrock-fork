@@ -1,38 +1,7 @@
 ---
-vagrant_box: geerlingguy/ubuntu1404
-vagrant_hostname: <example-project>.dev
-vagrant_machine_name: <example-project>
-# @note: this should be unique per project.
-vagrant_ip: 192.168.87.87
-
-# If you want to use NFS instead (two-way sync) create a local.config.yml file
-# where you override the vagrant_synced_folders variable with this value. This
-# file is not tracked in git so the change would be for you alone.
-#
-# vagrant_synced_folders:
-#   - local_path: .
-#     destination: /var/www/wordpress
-#     type: nfs
-#     create: true
-#
-vagrant_synced_folders:
-  - local_path: .
-    destination: /var/www/wordpress
-    id: wordpress
-    type: rsync
-    create: true
-    excluded_paths: ['.git/', './vm/', './lib/', '.tmp/', 'node_modules/', 'app/uploads/', 'app/cache/']
-    options_override:
-      rsync__chown: false
-      rsync__verbose: true
-      rsync__args: [
-        "--verbose", "--archive", "--delete",
-        "--owner", "--group", "--usermap=*:vagrant", "--groupmap=*:www-data",
-      ]
-
-# If you want to adjust this, create a local.config.yml file where you override
-# the value. This file is not tracked in git.
-vagrant_memory: 2048
+# This file should be kept without site specific overrides, place them in
+# vagrant.config.yml. That way when Drupal VM updates are brought in, this file
+# can be overriden without manual inspection.
 
 # Needs to match with what we have in .env and vagrant_synced_folders.
 drupal_core_path: "/var/www/wordpress/web"
@@ -60,10 +29,11 @@ installed_extras:
   - adminer
   # - blackfire
   # - drupalconsole
+  # - drush
   # - elasticsearch
   # - java
   - mailhog
-  - memcached
+  # - memcached
   # - newrelic
   # - nodejs
   - pimpmylog
@@ -72,7 +42,7 @@ installed_extras:
   # - selenium
   # - solr
   # - varnish
-  - xdebug
+  # - xdebug
   - xhprof
 
 # Add any extra apt or yum packages you would like installed.
@@ -87,41 +57,5 @@ composer_global_packages:
 
 ssh_home: "{{ drupal_core_path }}"
 post_provision_scripts:
-  - "{{ config_dir }}/../lib/genero-conf/post-provisioning/dotfiles.sh"
-  - "{{ config_dir }}/../lib/genero-conf/post-provisioning/wordpress.sh"
-
-# PHP Configuration. Currently-supported versions: 5.6, 7.0.
-# To use 5.6, see: http://docs.drupalvm.com/en/latest/other/php-56/
-# To use 7.0, comment out this entire section, including the xhprof variables.
-php_version: "5.6"
-php_install_recommends: no
-php_packages:
-  - php5.6
-  - php5.6-apcu
-  - php5.6-mcrypt
-  - php5.6-cli
-  - php5.6-common
-  - php5.6-curl
-  - php5.6-dev
-  - php5.6-fpm
-  - php5.6-gd
-  - php5.6-sqlite3
-  - php5.6-xml
-  - php5.6-mbstring
-  - libpcre3-dev
-php_conf_paths:
-  - /etc/php/5.6/fpm
-  - /etc/php/5.6/apache2
-  - /etc/php/5.6/cli
-php_extension_conf_paths:
-  - /etc/php/5.6/fpm/conf.d
-  - /etc/php/5.6/apache2/conf.d
-  - /etc/php/5.6/cli/conf.d
-php_fpm_daemon: php5.6-fpm
-php_fpm_conf_path: "/etc/php/5.6/fpm"
-php_fpm_pool_conf_path: "/etc/php/5.6/fpm/pool.d/www.conf"
-php_mysql_package: php5.6-mysql
-php_redis_package: php5.6-redis
-php_memcached_package: php5.6-memcached
-xhprof_download_url: https://github.com/phacility/xhprof/archive/master.tar.gz
-xhprof_download_folder_name: xhprof-master
+  - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/dotfiles.sh"
+  - "{{ config_dir }}/../vendor/generoi/genero-conf/post-provisioning/wordpress.sh"
