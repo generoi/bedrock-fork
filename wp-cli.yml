@@ -2,7 +2,7 @@ path: web/wp
 
 # Required for WP-CLI 2.4.0 SSH feature.
 require:
-  - lib/genero-conf/wp/wp-cli-pre-ssh.php
+  - vendor/generoi/genero-conf/wp/wp-cli-pre-ssh.php
 
 # WP-CLI 2.4.0 SSH feature
 # ------------------------
