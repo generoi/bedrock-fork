@@ -1,6 +1,7 @@
-set :application, '<example-project>'
-set :repo_url, 'git@github.com:generoi/<example-project>.git'
+set :application,       '<example-project>'
+set :repo_url,          'git@github.com:generoi/<example-project>.git'
 set :customer_username, '<example-project>'
+set :theme_dir,         'web/app/themes/<example-project>'
 
 # Hardcodes branch to always be master
 # This could be overridden in a stage config file
@@ -20,17 +21,17 @@ set :linked_dirs, fetch(:linked_dirs, []).push('web/app/uploads', 'web/app/cache
 
 # We will after the deploy set all uploaded files to have the permissions of the customer
 # So that the quota on the server will be counted towards that user.
-set :file_permissions_paths, ["web"]
+set :file_permissions_paths, ['web']
 set :file_permissions_users, [fetch(:customer_username)]
 
-set :tail_options,            "-n 100 -f"
-set :rsync_options,           "--recursive --times --compress --human-readable --progress"
-set :composer_install_flags,  "--no-dev --no-interaction --quiet --optimize-autoloader"
+set :tail_options,            '-n 100 -f'
+set :rsync_options,           '--recursive --times --compress --human-readable --progress'
+set :composer_install_flags,  '--no-dev --no-interaction --quiet --optimize-autoloader'
 
 # Assets
-set :assets_dist_path,        "web/app/themes/<example-project>/dist"
+set :assets_dist_path,        -> { "#{fetch(:theme_dir)}/dist" }
 set :assets_compile,          "npm run-script build"
-set :assets_output,           [fetch(:assets_dist_path), 'web/app/themes/<example-project>/bower_components']
+set :assets_output,           -> { [fetch(:assets_dist_path), "#{fetch(:theme_dir)}/bower_components"] }
 
 # Slackistrano (change to true)
 set :slack_run_starting,     -> { false }
@@ -39,59 +40,20 @@ set :slack_run_failed,       -> { false }
 # Add an incoming webhook at https://<team>.slack.com/services/new/incoming-webhook
 # set :slack_webhook, "https://hooks.slack.com/services/XXX/XXX/XXX"
 
-# Task definitions
-namespace :cache do
-  desc 'Flush WP Super Cache'
-  task 'flush-wpcc' do
-    on roles(:app) do
-      within current_path do
-        begin
-          execute :sudo, :chown, '-Rf', 'deploy:deploy', 'web/app/cache/supercache'
-          execute :rm, '-rf', 'web/app/cache/supercache/*'
-          execute :rm, '-rf', 'web/app/cache/meta/*'
-          execute :rm, '-f', 'web/app/cache/wp-cache-*'
-        rescue Exception
-          # Ignore exceptions as they are throw if * expands to nothing
-        end
-      end
-    end
-  end
-
-  desc 'Flush Autoptimize Cache'
-  task 'flush-autoptimize' do
-    on roles(:app) do
-      within current_path do
-        begin
-          execute :sudo, :chown, '-Rf', 'deploy:deploy', 'web/app/cache/autoptimize/*'
-          execute :rm, '-rf', 'web/app/cache/autoptimize/*'
-        rescue Exception
-          # Ignore exceptions as they are throw if * expands to nothing
-        end
-      end
-    end
-  end
-
-  desc 'Clean locally compiled dist/ assets.'
-  task 'flush-dist' do
-    run_locally do
-      execute :rm, '-rf', fetch(:assets_dist_path)
-    end
-  end
-end
 
 # Sanity check
-before "deploy:starting", "deploy:check:pushed"
-before "deploy:starting", "deploy:check:assets"
-before "deploy:starting", "deploy:check:sshagent"
+before 'deploy:starting', 'deploy:check:pushed'
+before 'deploy:starting', 'deploy:check:assets'
+before 'deploy:starting', 'deploy:check:sshagent'
 
 # Install plugins
-before "deploy:updated", "composer:install"
+before 'deploy:updated', 'composer:install'
 # Compiled and rsync assets
-after "deploy:updated", "assets:push"
+after 'deploy:updated', 'assets:push'
 
 # Clear the cache
-after "deploy:published", "cache:flush-autoptimize"
-after "deploy:published", "cache:flush-wpcc"
+after 'deploy:published', 'wp:cache:flush-autoptimize'
+after 'deploy:published', 'wp:cache:flush-wpcc'
 
 # Clear the locally compiled dist/ assets.
-after "deploy:finishing", "cache:flush-dist"
+after 'deploy:finishing', 'wp:cache:flush-dist'

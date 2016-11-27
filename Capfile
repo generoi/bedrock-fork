@@ -8,5 +8,3 @@ require 'capistrano/composer'
 require 'capistrano/genero'
 
 require 'slackistrano'
-
-Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r  }
