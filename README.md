@@ -171,8 +171,19 @@ not yet been fetched
     cd -
     ```
 
-3. Setup git hooks `./lib/git-hooks/install.sh`
-4. Install dependencies `bundle; composer install`
+3. Install dependencies
+
+    ```sh
+    bundle
+    composer install
+    ```
+
+4. Setup git hooks
+
+    ```sh
+    git config core.hooksPath "vendor/generoi/git-hooks/hooks"
+    ```
+
 5. Setup the ENV variables (pre-configured for the VM) `cp .env.example .env`
 6. Rename everything (relies on your theme being named the same as the repository)
 
@@ -209,7 +220,7 @@ not yet been fetched
 
     ```sh
     # Change the VM IP to something unique
-    vim config/config.yml
+    vim config/vagrant.config.yml
 
     # Build the VM
     vagrant up
