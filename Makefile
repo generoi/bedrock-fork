@@ -4,7 +4,7 @@ DATABASE_EXPORT ?= database.sql
 DEV_HOST ?= <example-project>.dev
 PRODUCTION_HOST ?= <example-project>.com
 LOCAL_HOST ?= localhost:3000
-STAGING_HOST ?= <example-project>.staging.minasanor.genero.fi
+STAGING_HOST ?= <example-project>.web.staging.minasanor.genero.fi
 
 PRODUCTION_REMOTE_HOST ?= deploy@<example-project>.com:/home/www/<example-project>
 STAGING_REMOTE_HOST ?= deploy@minasanor.genero.fi:/var/www/staging/<example-project>
