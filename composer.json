@@ -132,6 +132,10 @@
     },
     {
       "type": "vcs",
+      "url": "https://github.com/generoi/wp-timber-extended"
+    },
+    {
+      "type": "vcs",
       "url": "https://github.com/generoi/acf-post-type-chooser"
     },
     {
@@ -176,7 +180,7 @@
 
     "wpackagist-plugin/widget-options": "^3.0.2",
     "daggerhart/sweet-widget-admin-ui": "dev-master",
-    "Daronspence/acf-widgets": "~1.10",
+    "Daronspence/acf-widgets": "dev-master",
 
     "wpackagist-plugin/wordpress-seo": "~3.8",
     "wpackagist-plugin/google-analytics-for-wordpress": "^5.5.4",
@@ -208,6 +212,7 @@
 
     "wpackagist-plugin/timber-library": "^1.1.10",
     "wpackagist-plugin/debug-bar-timber": "~0.3",
+    "generoi/wp-timber-extended": "^0.0.1",
 
     "roots/soil": "^3.7.1",
     "generoi/wp-genero-analytics": "^1.0.0",
