@@ -5,9 +5,9 @@
   "homepage": "http://www.<example-project>.fi",
   "main": "index.js",
   "scripts": {
-    "test": "cd web/app/themes/<example-project>/; gulp jshint && node_modules/.bin/jscs assets/scripts/*.js",
-    "update": "bundle && composer install && (cd web/app/themes/<example-project>/; npm install && bower install)",
-    "build": "cd web/app/themes/<example-project>/; gulp --production"
+    "test": "cd web/app/themes/sage; npm run lint",
+    "update": "bundle && composer install && (cd web/app/themes/sage; npm install)",
+    "build": "cd web/app/themes/sage; npm run build"
   },
   "repository": {
     "type": "git",
