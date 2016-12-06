@@ -30,16 +30,8 @@ set :composer_install_flags,  '--no-dev --no-interaction --quiet --optimize-auto
 
 # Assets
 set :assets_dist_path,        -> { "#{fetch(:theme_dir)}/dist" }
-set :assets_compile,          "npm run-script build"
+set :assets_compile,          'npm run-script build'
 set :assets_output,           -> { [fetch(:assets_dist_path), "#{fetch(:theme_dir)}/bower_components"] }
-
-# Slackistrano (change to true)
-set :slack_run_starting,     -> { false }
-set :slack_run_finishing,    -> { false }
-set :slack_run_failed,       -> { false }
-# Add an incoming webhook at https://<team>.slack.com/services/new/incoming-webhook
-# set :slack_webhook, "https://hooks.slack.com/services/XXX/XXX/XXX"
-
 
 # Sanity check
 before 'deploy:starting', 'deploy:check:pushed'
@@ -52,8 +44,8 @@ before 'deploy:updated', 'composer:install'
 after 'deploy:updated', 'assets:push'
 
 # Clear the cache
-after 'deploy:published', 'wp:cache:flush-autoptimize'
-after 'deploy:published', 'wp:cache:flush-wpcc'
+after 'deploy:published', 'wp:cache:autoptimize'
+after 'deploy:published', 'wp:cache:wpcc'
 
 # Clear the locally compiled dist/ assets.
-after 'deploy:finishing', 'wp:cache:flush-dist'
+after 'deploy:finishing', 'wp:cache:dist'

@@ -1,7 +1,6 @@
-set :stage, :staging
-
-set :app_url,       "http://<example-project>.web.staging.minasanor.genero.fi"
-set :deploy_to,     "/var/www/staging/<example-project>"
+set :stage,     :staging
+set :app_url,   'http://<example-project>.web.staging.minasanor.genero.fi'
+set :deploy_to, '/var/www/staging/<example-project>'
 
 # Simple Role Syntax
 # ==================
