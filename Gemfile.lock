@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/generoi/capistrano-tasks.git
-  revision: 34d96e4136752ea159399bcfb112bf623db7fe53
+  revision: db30fc11ea510f29a638dc1024db48c5adbb98da
   specs:
     capistrano-genero (1.0.0)
       capistrano (>= 3.1)
@@ -19,21 +19,15 @@ GEM
       terminal-notifier (~> 1.6)
     capistrano-ssh-doctor (1.0.0)
       capistrano (>= 3.1)
-    colorize (0.7.7)
     i18n (0.7.0)
-    json (1.8.3)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
-    net-ssh (3.0.1)
-    rake (10.4.2)
-    slackistrano (0.1.12)
-      capistrano (>= 3.0.1)
-      json
-    sshkit (1.7.1)
-      colorize (>= 0.7.0)
+    net-ssh (3.2.0)
+    rake (12.0.0)
+    sshkit (1.11.4)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    terminal-notifier (1.6.3)
+    terminal-notifier (1.7.1)
 
 PLATFORMS
   ruby
@@ -44,7 +38,6 @@ DEPENDENCIES
   capistrano-genero!
   capistrano-nc (~> 0.1)
   capistrano-ssh-doctor (~> 1.0)
-  slackistrano
 
 BUNDLED WITH
    1.11.2

@@ -1,10 +1,8 @@
 require 'socket'
 require 'net/ssh/proxy/command'
 
-set :stage, :production
-
-set :app_url,       "http://www.<example-project>.fi"
-set :deploy_to,     "/var/www/<example-project>"
+set :stage,   :production
+set :app_url, 'http://www.<example-project>.fi'
 
 # Simple Role Syntax
 # ==================
