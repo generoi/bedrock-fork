@@ -114,17 +114,8 @@
       }
     },
     {
-      "type":"package",
-      "package": {
-        "name": "wp-premium/advanced-custom-fields-pro",
-        "version": "5.4.8",
-        "type": "wordpress-plugin",
-        "source": {
-          "url": "https://github.com/wp-premium/advanced-custom-fields-pro.git",
-          "type": "git",
-          "reference": "master"
-        }
-      }
+      "type": "vcs",
+      "url": "https://github.com/generoi/advanced-custom-fields-pro.git"
     },
     {
       "type": "vcs",
@@ -190,9 +181,9 @@
     "wp-premium/gravityforms": "*",
     "wp-premium/gravityforms-multilingual": "*",
 
-    "wp-premium/advanced-custom-fields-pro": "*",
-    "wpackagist-plugin/acf-image-crop-add-on": "*",
-    "wpackagist-plugin/advanced-custom-fields-number-slider": "*",
+    "generoi/advanced-custom-fields-pro": "~5.5.1",
+    "wpackagist-plugin/acf-image-crop-add-on": "^1.4.9",
+    "wpackagist-plugin/advanced-custom-fields-number-slider": "^0.4.2",
     "reyhoun/acf-post-type-chooser": "dev-master",
     "gillesgoetsch/acf-smart-button": "dev-master",
 
