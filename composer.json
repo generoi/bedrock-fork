@@ -207,9 +207,7 @@
 
     "roots/soil": "^3.7.1",
     "generoi/wp-genero-analytics": "^1.0.0",
-    "generoi/wp-genero-adjustments": "^1.0.0",
-
-    "roots/soil": "3.7.0"
+    "generoi/wp-genero-adjustments": "^1.0.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.5.1",
