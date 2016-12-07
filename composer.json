@@ -169,7 +169,7 @@
     "wpackagist-plugin/custom-post-type-ui": "^1.4.3",
     "wpackagist-plugin/simple-custom-post-order": "~2.3",
 
-    "wpackagist-plugin/widget-options": "^3.0.2",
+    "wpackagist-plugin/widget-options": "~3.1",
     "daggerhart/sweet-widget-admin-ui": "dev-master",
     "Daronspence/acf-widgets": "dev-master",
 
@@ -207,7 +207,8 @@
 
     "roots/soil": "^3.7.1",
     "generoi/wp-genero-analytics": "^1.0.0",
-    "generoi/wp-genero-adjustments": "^1.0.0"
+    "generoi/wp-genero-adjustments": "^1.0.0",
+    "wp-cli/wp-cli": "^1.0.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.5.1",
