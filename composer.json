@@ -147,6 +147,10 @@
     },
     {
       "type": "vcs",
+      "url": "https://github.com/generoi/acfml.git"
+    },
+    {
+      "type": "vcs",
       "url": "https://github.com/generoi/git-hooks.git"
     }
   ],
@@ -169,7 +173,7 @@
     "wpackagist-plugin/custom-post-type-ui": "^1.4.3",
     "wpackagist-plugin/simple-custom-post-order": "~2.3",
 
-    "wpackagist-plugin/widget-options": "~3.1",
+    "wpackagist-plugin/widget-options": "^3.1.0",
     "daggerhart/sweet-widget-admin-ui": "dev-master",
     "Daronspence/acf-widgets": "dev-master",
 
@@ -191,6 +195,7 @@
     "wp-premium/wpml-media": "*",
     "wp-premium/wpml-string-translation": "*",
     "wp-premium/wpml-translation-management": "*",
+    "generoi/acfml": "~0.2",
 
     "wpackagist-plugin/wp-super-cache": "^1.4.8",
     "wpackagist-plugin/wp-super-cache-clear-cache-menu": "~1.4",

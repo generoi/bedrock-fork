@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "19881579aa0db097c9b6afb44dd51930",
-    "content-hash": "b0a8806f0538c9e511319845e510b8a6",
+    "hash": "36014b4c1bdb34a20be4a6c6e9c71475",
+    "content-hash": "6b3d4f54e88c3165e0844aee5c5b40bc",
     "packages": [
         {
             "name": "Daronspence/acf-widgets",
@@ -441,6 +441,50 @@
                 "source": "https://github.com/generoi/sweet-widget-admin-ui/tree/master"
             },
             "time": "2016-11-25 13:08:35"
+        },
+        {
+            "name": "generoi/acfml",
+            "version": "v0.2",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:generoi/acfml.git",
+                "reference": "8d7b8fe9828e313e6bc2de37ee1ee7b60e41fdc2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/generoi/acfml/zipball/8d7b8fe9828e313e6bc2de37ee1ee7b60e41fdc2",
+                "reference": "8d7b8fe9828e313e6bc2de37ee1ee7b60e41fdc2",
+                "shasum": ""
+            },
+            "archive": {
+                "exclude": [
+                    ".gitignore"
+                ]
+            },
+            "require": {
+                "composer/installers": "~1.0",
+                "php": ">=5.4.0"
+            },
+            "type": "wordpress-plugin",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oskar Schöldström",
+                    "email": "public@oxy.fi"
+                }
+            ],
+            "description": "Advanced Custom Fields Multilingual",
+            "homepage": "https://wpml.org/download/acfml/",
+            "keywords": [
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/generoi/acfml/issues",
+                "source": "https://github.com/generoi/acfml/tree/v0.2"
+            },
+            "time": "2016-12-07 12:35:29"
         },
         {
             "name": "generoi/advanced-custom-fields-pro",
