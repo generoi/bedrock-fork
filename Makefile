@@ -57,7 +57,7 @@ wp-pull-files:
 
 # Push the files in the dev environment to the remote filesystem
 wp-push-files: wp-fetch-files
-	rsync -v -r -e 'ssh $(RSYNC_SSH)' $(SOURCE) $(TARGET)
+	rsync -v -r --no-perms --no-owner --no-group -e 'ssh $(RSYNC_SSH)' $(SOURCE) $(TARGET)
 
 
 # Production tasks ------------------------------------------------------------
