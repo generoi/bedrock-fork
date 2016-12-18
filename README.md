@@ -30,7 +30,8 @@ See a complete working example in the [roots-example-project.com repo](https://g
 * Ansible 2.2.0.0 or higher
 * Vagrant 1.8.7 or higher
 * An updated verison of VirtualBox (on OS X)
-* npm (you can manage npm versions using nvm)
+* node
+* yarn
 * bundler
 
 ## Installation
@@ -57,10 +58,8 @@ See a complete working example in the [roots-example-project.com repo](https://g
     vagrant rsync-auto
 
     # Install theme dependencies
-    # If npm install fails, make sure you have the lastest node and npm installed
     cd web/app/themes/example
-    npm install
-    bower install
+    yarn
 
 #### Add SSH configurations for the remote hosts
 
@@ -104,8 +103,7 @@ core) and ruby code (that capistrano needs) by running
     composer install
 
     cd web/app/themes/<example-project>
-    npm install
-    bower install
+    yarn
 
 if composer complains, do the composer udpate using the `--ignore-platform-reqs` flag
 
@@ -163,9 +161,8 @@ not yet been fetched
     # Delete the git files
     rm -rf .git
 
-    # Install NPM and Bower packages
-    npm install
-    bower install
+    # Install NPM packages
+    yarn
 
     # Return to the root of the project
     cd -

@@ -31,8 +31,9 @@ set :composer_install_flags,  '--no-dev --no-interaction --quiet --optimize-auto
 
 # Assets
 set :assets_dist_path,        -> { "#{fetch(:theme_dir)}/dist" }
-set :assets_compile,          'npm run-script build'
-set :assets_output,           -> { [fetch(:assets_dist_path), "#{fetch(:theme_dir)}/bower_components"] }
+set :assets_compile,          'npm run build'
+# @todo vendor should be fetched on remote.
+set :assets_output,           -> { [fetch(:assets_dist_path), "#{fetch(:theme_dir)}/vendor"] }
 
 # Sanity check
 before 'deploy:starting', 'deploy:check:pushed'
