@@ -7,4 +7,5 @@ require 'capistrano-nc/nc'
 require 'capistrano/composer'
 require 'capistrano/genero'
 
-include SSHKit::DSL
+require "capistrano/scm/git"
+install_plugin Capistrano::SCM::Git
