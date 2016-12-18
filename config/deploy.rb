@@ -18,6 +18,7 @@ set :log_level, :info
 # it needs to be added to linked_files so it persists across deploys:
 set :linked_files, fetch(:linked_files, []).push('.env')
 set :linked_dirs, fetch(:linked_dirs, []).push('web/app/uploads', 'web/app/cache')
+set :shared_settings, '.env'
 
 # We will after the deploy set all uploaded files to have the permissions of the customer
 # So that the quota on the server will be counted towards that user.
@@ -25,7 +26,7 @@ set :file_permissions_paths, ['web']
 set :file_permissions_users, [fetch(:customer_username)]
 
 set :tail_options,            '-n 100 -f'
-set :rsync_options,           '--recursive --times --compress --human-readable --progress'
+set :rsync_options,           '--recursive --times --compress'
 set :composer_install_flags,  '--no-dev --no-interaction --quiet --optimize-autoloader'
 
 # Assets
@@ -45,7 +46,7 @@ after 'deploy:updated', 'assets:push'
 
 # Clear the cache
 after 'deploy:published', 'wp:cache:autoptimize'
-after 'deploy:published', 'wp:cache:wpcc'
+after 'deploy:published', 'wp:cache:wpsc'
 
 # Clear the locally compiled dist/ assets.
 after 'deploy:finishing', 'wp:cache:dist'

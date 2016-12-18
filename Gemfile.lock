@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/generoi/capistrano-tasks.git
-  revision: db30fc11ea510f29a638dc1024db48c5adbb98da
+  revision: add24340cf0448077648f03f88c83d59543fc1fb
   specs:
     capistrano-genero (1.0.0)
       capistrano (>= 3.1)
@@ -8,12 +8,17 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    capistrano (3.2.1)
+    airbrussh (1.1.1)
+      sshkit (>= 1.6.1, != 1.7.0)
+    capistrano (3.7.1)
+      airbrussh (>= 1.0.0)
+      capistrano-harrow
       i18n
       rake (>= 10.0.0)
-      sshkit (~> 1.3)
+      sshkit (>= 1.9.0)
     capistrano-composer (0.0.6)
       capistrano (>= 3.0.0.pre)
+    capistrano-harrow (0.5.3)
     capistrano-nc (0.1.4)
       capistrano (~> 3.0)
       terminal-notifier (~> 1.6)
@@ -24,7 +29,7 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (3.2.0)
     rake (12.0.0)
-    sshkit (1.11.4)
+    sshkit (1.11.5)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     terminal-notifier (1.7.1)
@@ -33,7 +38,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  capistrano (~> 3.2.0)
+  capistrano (~> 3.7.0)
   capistrano-composer
   capistrano-genero!
   capistrano-nc (~> 0.1)
