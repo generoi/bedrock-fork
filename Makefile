@@ -30,6 +30,7 @@ wp-search-replace:
 wp-pull-db:
 	make db-clean WP_CLI_HOST=$(SOURCE) $(DATABASE_EXPORT)
 	cat $(DATABASE_EXPORT) | wp @$(TARGET) db cli
+	make $(TARGET)-db-search-replace db-clean
 
 wp-push-db: $(DATABASE_EXPORT)
 	cat $(DATABASE_EXPORT) | wp @$(TARGET) db cli
