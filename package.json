@@ -5,9 +5,9 @@
   "homepage": "http://www.<example-project>.fi",
   "main": "index.js",
   "scripts": {
-    "test": "cd web/app/themes/<example-project>; npm run lint",
-    "update": "bundle && composer install && (cd web/app/themes/<example-project>; npm install)",
-    "build": "cd web/app/themes/<example-project>; npm run build"
+    "test": "cd web/app/themes/<example-project>; yarn run lint",
+    "update": "bundle && composer install && (cd web/app/themes/<example-project>; yarn)",
+    "build": "cd web/app/themes/<example-project>; yarn run build:production"
   },
   "repository": {
     "type": "git",
