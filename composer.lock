@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "108300adee8dcfbe3868cfaf5fa4b92e",
-    "content-hash": "dcd500c000c14d07a45cea033b8f44ad",
+    "hash": "9eea2cc860567762a3d77826e122130d",
+    "content-hash": "0ed3e97612c5a0596960ffadd79b8384",
     "packages": [
         {
             "name": "Daronspence/acf-widgets",
@@ -482,16 +482,16 @@
         },
         {
             "name": "generoi/wp-timber-extended",
-            "version": "v0.0.1",
+            "version": "v0.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/generoi/wp-timber-extended.git",
-                "reference": "846ef1cf9e65f1698c1ebf5b772bba3775315811"
+                "reference": "f97f06c489202a4ef17ef2256cbdb7f9fc074c72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/generoi/wp-timber-extended/zipball/846ef1cf9e65f1698c1ebf5b772bba3775315811",
-                "reference": "846ef1cf9e65f1698c1ebf5b772bba3775315811",
+                "url": "https://api.github.com/repos/generoi/wp-timber-extended/zipball/f97f06c489202a4ef17ef2256cbdb7f9fc074c72",
+                "reference": "f97f06c489202a4ef17ef2256cbdb7f9fc074c72",
                 "shasum": ""
             },
             "archive": {
@@ -520,9 +520,9 @@
             ],
             "support": {
                 "issues": "https://github.com/generoi/wp-timber-extended/issues",
-                "source": "https://github.com/generoi/wp-timber-extended/tree/v0.0.1"
+                "source": "https://github.com/generoi/wp-timber-extended/tree/master"
             },
-            "time": "2016-12-05 02:02:55"
+            "time": "2016-12-14 18:47:47"
         },
         {
             "name": "gillesgoetsch/acf-smart-button",
