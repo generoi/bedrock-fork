@@ -51,9 +51,15 @@ extra_packages:
   - optipng
   - gifsicle
 
+# Use mariadb as we do on JNT.
+mysql_packages:
+  - mariadb-client
+  - mariadb-server
+  - python-mysqldb
+
 composer_global_packages:
   - { name: hirak/prestissimo, release: '^0.3' }
-  - { name: wp-cli/wp-cli, release: '^0.25' }
+  - { name: wp-cli/wp-cli, release: '^1.0.0' }
 
 ssh_home: "{{ drupal_core_path }}"
 post_provision_scripts:
