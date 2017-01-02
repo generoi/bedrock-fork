@@ -1,6 +1,6 @@
 set :stage,     :staging
-set :app_url,   'http://sage-dev.web.staging.minasithil.genero.fi'
-set :deploy_to, '/var/www/staging/sage-dev'
+set :app_url,   'http://<example-project>.web.staging.minasithil.genero.fi'
+set :deploy_to, '/var/www/staging/<example-project>'
 
 # Simple Role Syntax
 # ==================

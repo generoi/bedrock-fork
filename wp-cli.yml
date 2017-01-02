@@ -24,7 +24,7 @@ require:
   url: <example-project>.dev
 
 @staging:
-  ssh: deploy@minasithil.genero.fi/var/www/staging/sage-dev/current/web/wp
+  ssh: deploy@minasithil.genero.fi/var/www/staging/<example-project>/current/web/wp
   url: <example-project>.web.staging.minasithil.genero.fi
 
 @production:
