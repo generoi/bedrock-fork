@@ -60,6 +60,7 @@ See a complete working example in the [roots-example-project.com repo](https://g
     # Install theme dependencies
     cd web/app/themes/example
     yarn
+    composer install
 
 #### Add SSH configurations for the remote hosts
 
@@ -104,6 +105,7 @@ core) and ruby code (that capistrano needs) by running
 
     cd web/app/themes/<example-project>
     yarn
+    composer install
 
 if composer complains, do the composer udpate using the `--ignore-platform-reqs` flag
 
@@ -163,8 +165,9 @@ not yet been fetched
     # Delete the git files
     rm -rf .git
 
-    # Install NPM packages
+    # Install dependencies
     yarn
+    composer install
 
     # Return to the root of the project
     cd -
