@@ -89,6 +89,13 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
+
+# Serve WebP versions if supported and available.
+RewriteCond %{HTTP_ACCEPT} image/webp
+RewriteCond %{REQUEST_FILENAME} (.*)\.(jpe?g|png)$
+RewriteCond %{REQUEST_FILENAME}\.webp -f
+RewriteRule (.+)\.(jpe?g|png)$ %{REQUEST_FILENAME}.webp [T=image/webp,E=accept:1]
+
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -101,6 +108,12 @@ RewriteRule . /index.php [L]
 # RewriteEngine On
 # RewriteBase /
 # RewriteRule ^index\.php$ - [L]
+#
+# # Serve WebP versions if supported and available.
+# RewriteCond %{HTTP_ACCEPT} image/webp
+# RewriteCond %{REQUEST_FILENAME} (.*)\.(jpe?g|png)$
+# RewriteCond %{REQUEST_FILENAME}\.webp -f
+# RewriteRule (.+)\.(jpe?g|png)$ %{REQUEST_FILENAME}.webp [T=image/webp,E=accept:1]
 #
 # # add a trailing slash to /wp-admin
 # RewriteRule ^wp-admin$ wp-admin/ [R=301,L]
@@ -130,6 +143,9 @@ RewriteRule . /index.php [L]
   # Serve correct content types, and prevent mod_deflate double gzip.
   RewriteRule \.css\.gz$ - [T=text/css,E=no-gzip:1]
   RewriteRule \.js\.gz$ - [T=text/javascript,E=no-gzip:1]
+
+  # WebP rewriting.
+  Header append Vary Accept env=REDIRECT_accept
 
   <FilesMatch "(\.js\.gz|\.css\.gz)$">
     # Serve correct encoding type.

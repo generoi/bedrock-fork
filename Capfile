@@ -5,7 +5,7 @@ require 'capistrano/setup'
 require 'capistrano/deploy'
 require 'capistrano-nc/nc'
 require 'capistrano/composer'
+require 'capistrano/genero'
 
-require 'slackistrano'
-
-Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r  }
+require "capistrano/scm/git"
+install_plugin Capistrano::SCM::Git

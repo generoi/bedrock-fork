@@ -1,10 +1,8 @@
 require 'socket'
 require 'net/ssh/proxy/command'
 
-set :stage, :production
-
-set :app_url,       "http://www.<example-project>.fi"
-set :deploy_to,     "/var/www/<example-project>"
+set :stage,   :production
+set :app_url, 'http://www.<example-project>.fi'
 
 # Simple Role Syntax
 # ==================
@@ -19,8 +17,8 @@ set :ssh_options, {
   forward_agent: true
 }
 
-if Socket.gethostname != "minasanor"
+if Socket.gethostname != "minasithil"
   set :ssh_options, fetch(:ssh_options).merge({
-    proxy: Net::SSH::Proxy::Command.new('ssh deploy@minasanor.genero.fi nc %h %p 2> /dev/null')
+    proxy: Net::SSH::Proxy::Command.new('ssh deploy@minasithil.genero.fi nc %h %p 2> /dev/null')
   })
 end
