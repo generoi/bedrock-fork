@@ -83,7 +83,7 @@
     "roots/soil": "^3.7.1",
 
     "wpackagist-plugin/timber-library": "^1.1.10",
-    "generoi/wp-timber-extended": "^0.0.7",
+    "generoi/wp-timber-extended": "^0.0.8",
 
     "wpackagist-plugin/widget-options": "^3.1",
     "generoi/widget-options-extended": "^1.0.0",
