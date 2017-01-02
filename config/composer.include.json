@@ -121,16 +121,12 @@
     "wpackagist-plugin/kint-debugger": "~1.0",
     "wpackagist-plugin/duplicate-post": "^3.0.3",
 
-    "generoi/genero-conf": "^1.0.0"
+    "generoi/genero-conf": "~1.0"
   },
   "require-dev": {
-    "geerlingguy/drupal-vm": "~4.0.0",
-    "generoi/git-hooks": "^1.0.0"
-  },
-  "require-dev": {
-    "geerlingguy/drupal-vm": "~4.0.0",
+    "geerlingguy/drupal-vm": "~4.1",
     "asm89/twig-lint": "^1.0.2",
-    "generoi/git-hooks": "^1.0.0"
+    "generoi/git-hooks": "~1.0"
   },
   "extra": {
     "dropin-paths": {

@@ -16,14 +16,12 @@ install_site: false
 configure_drush_aliases: false
 drush_keep_updated: false
 
-apache_vhosts_ssl:
-  - servername: "{{ drupal_domain }}"
-    serveralias: "www.{{ drupal_domain }}"
-    documentroot: "{{ drupal_core_path }}"
-    certificate_file: "/etc/ssl/certs/ssl-cert-snakeoil.pem"
-    certificate_key_file: "/etc/ssl/private/ssl-cert-snakeoil.key"
-    extra_parameters: |
-          ProxyPassMatch ^/(.*\.php(/.*)?)$ "fcgi://127.0.0.1:9000{{ drupal_core_path }}"
+apache_vhost_ssl_addition:
+  certificate_file: "/etc/ssl/certs/ssl-cert-snakeoil.pem"
+  certificate_key_file: "/etc/ssl/private/ssl-cert-snakeoil.key"
+
+# Generate a SSL virtual host for every regular vhost.
+apache_vhosts_ssl: "{% set vhosts = [] %}{% for vhost in apache_vhosts %}{% if vhosts.append(vhost|combine(apache_vhost_ssl_addition)) %}{% endif %}{% endfor %}{{ vhosts }}"
 
 installed_extras:
   - adminer
