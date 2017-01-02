@@ -73,7 +73,7 @@ following to your `~/.ssh/config` file.
 
     Host <example-project>.fi
       ForwardAgent yes
-      ProxyCommand ssh deploy@minasanor.genero.fi nc %h %p 2> /dev/null
+      ProxyCommand ssh deploy@minasithil.genero.fi nc %h %p 2> /dev/null
 
 #### Using WP-CLI locally
 
