@@ -1,0 +1,141 @@
+{
+  "repositories": [
+    {
+      "type":"package",
+      "package": {
+        "name": "wp-premium/gravityforms",
+        "version": "2.0.7",
+        "type": "wordpress-plugin",
+        "source": { "url": "https://github.com/wp-premium/gravityforms.git", "type": "git", "reference": "master" }
+      }
+    },
+    {
+      "type":"package",
+      "package": {
+        "name": "wp-premium/gravityforms-multilingual",
+        "version": "1.3.11",
+        "type": "wordpress-plugin",
+        "source": { "url": "https://github.com/wp-premium/gravityforms-multilingual.git", "type": "git", "reference": "master" }
+      }
+    },
+    {
+      "type":"package",
+      "package": {
+        "name": "wp-premium/sitepress-multilingual-cms",
+        "version": "3.5.1.1",
+        "type": "wordpress-plugin",
+        "source": { "url": "https://github.com/wp-premium/sitepress-multilingual-cms.git", "type": "git", "reference": "master" }
+      }
+    },
+    {
+      "type":"package",
+      "package": {
+        "name": "wp-premium/wpml-media",
+        "version": "2.1.22",
+        "type": "wordpress-plugin",
+        "source": { "url": "https://github.com/wp-premium/wpml-media.git", "type": "git", "reference": "master" }
+      }
+    },
+    {
+      "type":"package",
+      "package": {
+        "name": "wp-premium/wpml-string-translation",
+        "version": "2.4.1.1",
+        "type": "wordpress-plugin",
+        "source": { "url": "https://github.com/wp-premium/wpml-string-translation.git", "type": "git", "reference": "master" }
+      }
+    },
+    {
+      "type":"package",
+      "package": {
+        "name": "wp-premium/wpml-translation-management",
+        "version": "2.2.2",
+        "type": "wordpress-plugin",
+        "source": { "url": "https://github.com/wp-premium/wpml-translation-management.git", "type": "git", "reference": "master" }
+      }
+    },
+    { "type": "composer", "url": "https://wp-languages.github.io/" },
+    { "type": "vcs", "url": "https://github.com/generoi/advanced-custom-fields-pro.git" },
+    { "type": "vcs", "url": "https://github.com/Daronspence/acf-widgets.git" },
+    { "type": "vcs", "url": "https://github.com/generoi/wp-timber-extended" },
+    { "type": "vcs", "url": "https://github.com/generoi/acf-post-type-chooser" },
+    { "type": "vcs", "url": "https://github.com/generoi/sweet-widget-admin-ui.git" },
+    { "type": "vcs", "url": "https://github.com/generoi/wp-genero-analytics.git" },
+    { "type": "vcs", "url": "https://github.com/generoi/wp-genero-adjustments.git" },
+    { "type": "vcs", "url": "https://github.com/generoi/widget-options-extended.git" },
+    { "type": "vcs", "url": "https://github.com/generoi/acf-foundation-column.git" },
+    { "type": "vcs", "url": "https://github.com/generoi/genero-conf.git" },
+    { "type": "vcs", "url": "https://github.com/generoi/acfml.git" },
+    { "type": "vcs", "url": "https://github.com/generoi/git-hooks.git" }
+  ],
+  "require": {
+    "koodimonni-language/fi": "*",
+    "koodimonni-language/sv_se": "*",
+
+    "wpackagist-plugin/akismet": "~3.2",
+    "wpackagist-plugin/regenerate-thumbnails": "^2.2.6",
+    "wpackagist-plugin/wp-mail-smtp": "^0.9.5",
+    "wpackagist-plugin/scalable-vector-graphics-svg": "~3.2",
+    "wpackagist-plugin/tinymce-advanced": "^4.4.1",
+    "wpackagist-plugin/custom-post-type-ui": "^1.4.3",
+    "wpackagist-plugin/simple-custom-post-order": "~2.3",
+    "generoi/wp-genero-adjustments": "^1.0.0",
+    "roots/soil": "^3.7.1",
+
+    "wpackagist-plugin/timber-library": "^1.1.10",
+    "generoi/wp-timber-extended": "^0.0.7",
+
+    "wpackagist-plugin/widget-options": "^3.1",
+    "generoi/widget-options-extended": "^1.0.0",
+    "daggerhart/sweet-widget-admin-ui": "dev-master",
+    "Daronspence/acf-widgets": "dev-master",
+
+    "wpackagist-plugin/wordpress-seo": "~3.8",
+    "wpackagist-plugin/google-analytics-for-wordpress": "^5.5.4",
+    "wpackagist-plugin/duracelltomi-google-tag-manager": "~1.4",
+    "wpackagist-plugin/redirection": "^2.4.5",
+    "generoi/wp-genero-analytics": "^1.1.0",
+
+    "wp-premium/gravityforms": "*",
+
+    "generoi/advanced-custom-fields-pro": "~5.5.1",
+    "generoi/acf-foundation-column": "~1.0.0",
+    "wpackagist-plugin/acf-image-crop-add-on": "^1.4.9",
+    "wpackagist-plugin/advanced-custom-fields-number-slider": "^0.4.2",
+    "reyhoun/acf-post-type-chooser": "dev-master",
+    "gillesgoetsch/acf-smart-button": "dev-master",
+
+    "wp-premium/sitepress-multilingual-cms": "*",
+    "wp-premium/wpml-media": "*",
+    "wp-premium/wpml-string-translation": "*",
+    "wp-premium/wpml-translation-management": "*",
+    "wp-premium/gravityforms-multilingual": "*",
+    "generoi/acfml": "~0.2",
+
+    "wpackagist-plugin/wp-super-cache": "^1.4.8",
+    "wpackagist-plugin/autoptimize": "^2.1.0",
+    "wpackagist-plugin/wp-performance-pack": "^1.10.4",
+    "wpackagist-plugin/ewww-image-optimizer": "^3.2.1",
+
+    "wpackagist-plugin/debug-bar": "^0.8.4",
+    "wpackagist-plugin/kint-debugger": "~1.0",
+    "wpackagist-plugin/duplicate-post": "^3.0.3",
+
+    "generoi/genero-conf": "^1.0.0"
+  },
+  "require-dev": {
+    "geerlingguy/drupal-vm": "~4.0.0",
+    "generoi/git-hooks": "^1.0.0"
+  },
+  "require-dev": {
+    "geerlingguy/drupal-vm": "~4.0.0",
+    "generoi/git-hooks": "^1.0.0"
+  },
+  "extra": {
+    "dropin-paths": {
+      "web/app/languages/": ["vendor:koodimonni-language"],
+      "web/app/languages/plugins/": ["vendor:koodimonni-plugin-language"],
+      "web/app/languages/themes/": ["vendor:koodimonni-theme-language"]
+    }
+  }
+}
