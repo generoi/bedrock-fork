@@ -1,16 +1,13 @@
+# Include specific configurations
+include config/Makefile.config
+
 WP_CLI_HOST ?= dev
 DATABASE_EXPORT ?= database.sql
 
-DEV_HOST ?= <example-project>.dev
-PRODUCTION_HOST ?= <example-project>.com
-LOCAL_HOST ?= localhost:3000
-STAGING_HOST ?= <example-project>.web.staging.minasithil.genero.fi
-
-PRODUCTION_REMOTE_HOST ?= deploy@<example-project>.com:/home/www/<example-project>
-STAGING_REMOTE_HOST ?= deploy@minasithil.genero.fi:/var/www/staging/<example-project>
-
 DEV_PLUGINS ?= debug-bar kint-debugger
 PROD_PLUGINS ?= autoptimize
+
+SSH_ARGS ?= -o ForwardAgent=yes -o ProxyCommand="ssh deploy@minasithil.genero.fi nc %h %p 2 > dev_null"
 
 all:
 
@@ -74,12 +71,12 @@ production-push-db: SOURCE=dev
 production-push-db: TARGET=production
 production-push-db: wp-push-db
 
-production-pull-files: RSYNC_SSH=-o ForwardAgent=yes -o ProxyCommand="ssh deploy@minasithil.genero.fi nc %h %p 2> /dev/null"
+production-pull-files: RSYNC_SSH=$(SSH_ARGS)
 production-pull-files: SOURCE=$(PRODUCTION_REMOTE_HOST)/deploy/current/web/app/uploads/
 production-pull-files: TARGET=web/app/uploads/
 production-pull-files: wp-pull-files
 
-production-push-files: RSYNC_SSH=-o ForwardAgent=yes -o ProxyCommand="ssh deploy@minasithil.genero.fi nc %h %p 2> /dev/null"
+production-push-files: RSYNC_SSH=$(SSH_ARGS)
 production-push-files: SOURCE=web/app/uploads/
 production-push-files: TARGET=$(PRODUCTION_REMOTE_HOST)/deploy/current/web/app/uploads/
 production-push-files: wp-push-files

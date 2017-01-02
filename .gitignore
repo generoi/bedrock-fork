@@ -46,6 +46,5 @@ log
 *.sql
 
 # Local configuration
-Makefile.config
 config/Vagrantfile.local
 config/local.config.yml
