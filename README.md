@@ -145,16 +145,18 @@ not yet been fetched
 
 ## Setup a new repository
 
-1. Clone the repo - `git clone --recursive git@github.com:generoi/bedrock.git foobar`
+1. Clone the repo
+
+    ```sh
+    git clone --recursive git@github.com:generoi/bedrock.git foobar
+    ```
+
 2. Clone the theme
 
     ```sh
     cd foobar/web/app/themes;
 
-    # Regular sage
     git clone git@github.com:generoi/sage.git foobar
-    # Alternatively the Timber version
-    git clone -b timber git@github.com:generoi/sage.git foobar
 
     cd foobar
 
@@ -168,33 +170,33 @@ not yet been fetched
     cd -
     ```
 
-3. Install dependencies
+3. Setup repo
 
     ```sh
+    # Install dependencies
     bundle
     composer install
-    ```
 
-4. Setup git hooks
-
-    ```sh
+    # Setup git hooks
     git config core.hooksPath "vendor/generoi/git-hooks/hooks"
+
+    # Setup the ENV variables (pre-configured for the VM)
+    cp .env.example .env
     ```
 
-5. Setup the ENV variables (pre-configured for the VM) `cp .env.example .env`
-6. Rename everything (relies on your theme being named the same as the repository)
+4. Rename everything (relies on your theme being named the same as the repository)
 
     ```sh
     # Search and replace all references to the project
     find . -type f -print0 | xargs -0 sed -i 's/<example-project>/foobar/g'
 
     # You need to manually setup the production host in:
-    # - `Makefile`
+    # - `config/Makefile.config`
     # - `config/deploy/production.rb`
     # - `wp-cli.yml`
     ```
 
-7. Setup the new remote git repository
+5. Setup the new remote git repository
 
     ```sh
     # Remove the existing master branch (bedrocks own)
@@ -213,7 +215,7 @@ not yet been fetched
     git push -u origin master
     ```
 
-7. Setup the VM
+6. Setup the VM
 
     ```sh
     # Change the VM IP to something unique
