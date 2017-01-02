@@ -230,14 +230,24 @@ not yet been fetched
 
 ## Deploys
 
-There are two methods to deploy Bedrock sites out of the box:
+    ```sh
+    # Deploy to staging
+    cap staging deploy
 
-* [Trellis](https://github.com/roots/trellis)
-* [bedrock-capistrano](https://github.com/roots/bedrock-capistrano)
+    # Deploy to production
+    cap production deploy
 
-Any other deployment method can be used as well with one requirement:
+    # Clear all caches on production
+    cap production wp:cache
+    # Clear only WP Super Cache cache
+    cap production wp:cache:wpsc
 
-`composer install` must be run as part of the deploy process.
+    # Deploy assets only
+    cap production assets:push
+
+    # Open a shell on production server
+    cap production ssh
+    ```
 
 ## Documentation
 
