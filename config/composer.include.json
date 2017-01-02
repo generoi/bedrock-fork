@@ -129,6 +129,7 @@
   },
   "require-dev": {
     "geerlingguy/drupal-vm": "~4.0.0",
+    "asm89/twig-lint": "^1.0.2",
     "generoi/git-hooks": "^1.0.0"
   },
   "extra": {
@@ -137,5 +138,8 @@
       "web/app/languages/plugins/": ["vendor:koodimonni-plugin-language"],
       "web/app/languages/themes/": ["vendor:koodimonni-theme-language"]
     }
+  },
+  "suggest": {
+    "hirak/prestissimo": "^0.3"
   }
 }
