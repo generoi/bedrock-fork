@@ -27,7 +27,7 @@ vagrant_synced_folders:
       rsync__chown: false
       rsync__verbose: true
       rsync__args: [
-        "--verbose", "--archive", "--delete",
+        "--verbose", "--archive", "--delete", "--copy-links",
         "--owner", "--group", "--usermap=*:vagrant", "--groupmap=*:www-data",
       ]
 
