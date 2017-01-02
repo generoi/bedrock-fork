@@ -17,15 +17,15 @@ require:
 #
 #     Host <example-project>.fi
 #       ForwardAgent yes
-#       ProxyCommand ssh deploy@minasanor.genero.fi nc %h %p 2> /dev/null
+#       ProxyCommand ssh deploy@minasithil.genero.fi nc %h %p 2> /dev/null
 
 @dev:
   ssh: vagrant@<example-project>.dev/var/www/wordpress/web/wp
   url: <example-project>.dev
 
 @staging:
-  ssh: deploy@minasanor.genero.fi/var/www/staging/<example-project>/current/web/wp
-  url: <example-project>.web.staging.minasanor.genero.fi
+  ssh: deploy@minasithil.genero.fi/var/www/staging/sage-dev/current/web/wp
+  url: <example-project>.web.staging.minasithil.genero.fi
 
 @production:
   ssh: deploy@<example-project>.fi/home/www/<example-project>/deploy/current/web/wp
