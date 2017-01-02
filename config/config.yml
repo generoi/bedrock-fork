@@ -50,6 +50,7 @@ extra_packages:
   - libjpeg-turbo-progs
   - optipng
   - gifsicle
+  - webp
 
 # Use mariadb as we do on JNT.
 mysql_packages:
