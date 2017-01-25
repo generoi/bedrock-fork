@@ -28,7 +28,8 @@ See a complete working example in the [roots-example-project.com repo](https://g
 * PHP >= 5.6
 * Composer - [Install](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
 * Ansible 2.2.0.0 or higher
-* Vagrant 1.8.7 or higher
+* Vagrant 1.9.0 or higher
+* VirtualBox 5.1.10 or higher
 * An updated verison of VirtualBox (on OS X)
 * node
 * yarn
