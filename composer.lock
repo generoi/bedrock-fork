@@ -1732,15 +1732,15 @@
         },
         {
             "name": "wpackagist-plugin/google-analytics-for-wordpress",
-            "version": "5.5.4",
+            "version": "6.0.16",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/google-analytics-for-wordpress/",
-                "reference": "tags/5.5.4"
+                "reference": "tags/6.0.16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.5.5.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.6.0.16.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1912,15 +1912,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "3.9",
+            "version": "4.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/3.9"
+                "reference": "tags/4.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.9.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.4.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1932,15 +1932,15 @@
         },
         {
             "name": "wpackagist-plugin/wp-mail-smtp",
-            "version": "0.9.6",
+            "version": "0.10.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wp-mail-smtp/",
-                "reference": "tags/0.9.6"
+                "reference": "tags/0.10.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-mail-smtp.0.9.6.zip",
+                "url": "https://downloads.wordpress.org/plugin/wp-mail-smtp.0.10.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1969,6 +1969,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wp-performance-pack/"
+        },
+        {
+            "name": "wpackagist-plugin/wp-sanitize-file-name-plus",
+            "version": "1.0.3",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/wp-sanitize-file-name-plus/",
+                "reference": "tags/1.0.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/wp-sanitize-file-name-plus.1.0.3.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/wp-sanitize-file-name-plus/"
         },
         {
             "name": "wpackagist-plugin/wp-super-cache",

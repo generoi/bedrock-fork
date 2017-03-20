@@ -18,8 +18,7 @@
         "source": { "url": "https://github.com/wp-premium/gravityforms-multilingual.git", "type": "git", "reference": "master" }
       }
     },
-    {
-      "type":"package",
+    { "type":"package",
       "package": {
         "name": "wp-premium/sitepress-multilingual-cms",
         "version": "3.5.1.1",
@@ -74,24 +73,25 @@
 
     "wpackagist-plugin/akismet": "~3.2",
     "wpackagist-plugin/regenerate-thumbnails": "^2.2.6",
-    "wpackagist-plugin/wp-mail-smtp": "^0.9.5",
+    "wpackagist-plugin/wp-mail-smtp": "^0.10",
     "wpackagist-plugin/scalable-vector-graphics-svg": "~3.2",
     "wpackagist-plugin/tinymce-advanced": "^4.4.1",
     "wpackagist-plugin/custom-post-type-ui": "^1.4.3",
-    "wpackagist-plugin/simple-custom-post-order": "~2.3",
+    "wpackagist-plugin/simple-custom-post-order": "^2.3.2",
+    "wpackagist-plugin/wp-sanitize-file-name-plus": "^1.0.3",
     "generoi/wp-genero-adjustments": "^1.0.0",
     "roots/soil": "^3.7.1",
 
     "wpackagist-plugin/timber-library": "^1.1.10",
     "generoi/wp-timber-extended": "^0.0.7",
 
-    "wpackagist-plugin/widget-options": "^3.1",
+    "wpackagist-plugin/widget-options": "^3.3",
     "generoi/widget-options-extended": "^1.0.0",
     "daggerhart/sweet-widget-admin-ui": "dev-master",
     "Daronspence/acf-widgets": "dev-master",
 
-    "wpackagist-plugin/wordpress-seo": "~3.8",
-    "wpackagist-plugin/google-analytics-for-wordpress": "^5.5.4",
+    "wpackagist-plugin/wordpress-seo": "^4",
+    "wpackagist-plugin/google-analytics-for-wordpress": "^6.0",
     "wpackagist-plugin/duracelltomi-google-tag-manager": "~1.4",
     "wpackagist-plugin/redirection": "^2.4.5",
     "generoi/wp-genero-analytics": "^1.1.0",
